@@ -17,20 +17,23 @@ import com.google.android.material.navigation.NavigationView
 
 class NavigationActivity : AppCompatActivity() {
     private var drawerLayout: DrawerLayout? = null
+    private var toolbar: Toolbar? = null
+    private var navController: NavController? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation)
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
 
         // Set up Action Bar
-        val navController = host.navController
-        setupActionBar(navController)
-        setupNavigationMenu(navController)
+        navController = host.navController
+        setupActionBar(navController as NavController)
+        setupNavigationMenu(navController as NavController)
 
     }
 

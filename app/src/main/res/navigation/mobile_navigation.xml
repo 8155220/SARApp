@@ -2,8 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/mobile_navigation"
-            app:startDestination="@id/fichaMedicaListFragment">
+            app:startDestination="@id/home_fragment_dest">
 
-    <fragment android:id="@+id/fichaMedicaListFragment" android:name="bo.edu.uagrm.sarapp.ui.FichaMedicaListFragment"
+    <fragment android:id="@+id/ficha_medica_list_fragment_dest" android:name="bo.edu.uagrm.sarapp.ui.FichaMedicaListFragment"
               android:label="FichaMedicaListFragment"/>
+
+    <fragment android:id="@+id/home_fragment_dest"
+              android:name="bo.edu.uagrm.sarapp.ui.HomeFragment"
+              android:label="HomeFragment"/>
 </navigation>
