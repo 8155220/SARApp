@@ -27,6 +27,6 @@ class PersonaRepository
     }
 
     companion object {
-        private const val DATABASE_PAGE_SIZE = 10;
+        private const val DATABASE_PAGE_SIZE = 20;
     }
 }

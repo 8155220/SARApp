@@ -48,7 +48,8 @@ class FichaMedicaListFragment : Fragment() {
 
         initAdapter()
         val query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
-        viewModel.searchPersona(query)
+        //viewModel.searchPersona(query)
+        viewModel.searchPersona("Eugenia")
         initSearch(query)
         
 
@@ -70,12 +71,12 @@ class FichaMedicaListFragment : Fragment() {
     }
 
     private fun updateRepoListFromInput() {
-        viewModel.searchPersona("A")
+        viewModel.searchPersona("Helen")
         adapter.submitList(null)
     }
 
     companion object {
         private const val LAST_SEARCH_QUERY: String = "last_search_query"
-        private const val DEFAULT_QUERY = "A"
+        private const val DEFAULT_QUERY = "Helen"
     }
 }

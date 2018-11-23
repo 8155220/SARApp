@@ -23,6 +23,7 @@ class PersonaLocalCache(private val personaDao: PersonaDao,
 
     fun personasByName(name:String):DataSource.Factory<Integer,Persona>{
         val query = "%${name.replace(' ','%')}%"
+        Log.i("PersonaLOcalCach2",query)
         return personaDao.personasByName(query)
     }
 }

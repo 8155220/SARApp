@@ -21,22 +21,9 @@ class PersonaService {
         dbRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        Log.i("DataSnapshot :",dataSnapshot.value.toString())
-                        var elements = dataSnapshot.children.toMutableList();
-                        var lista: ArrayList<Persona> = ArrayList<Persona>();
-                        Log.d("PersonaBundaryCallBack",elements.toString())
                         onSuccess(dataSnapshot.getArrayValue(Persona::class.java))
-
-                        /*for (element in elements) {
-                            var persona: Persona = element.getValue(Persona::class.java) as Persona
-                            persona.key = element.key as String;
-                            lista.add(persona);
-                            Log.d("PersonaBundaryCallBack",persona.toString())
-                        }
-                        onSuccess(lista)*/
                     }
                 }
-
                 override fun onCancelled(p0: DatabaseError) {
                     Log.i("PersonalModel","Error")
                     Log.i("PersonalModel",p0.message)
