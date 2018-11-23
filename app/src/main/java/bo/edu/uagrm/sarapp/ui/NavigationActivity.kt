@@ -14,6 +14,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import bo.edu.uagrm.sarapp.R
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.FirebaseApp
 
 class NavigationActivity : AppCompatActivity() {
     private var drawerLayout: DrawerLayout? = null
@@ -23,7 +24,7 @@ class NavigationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation)
-
+        FirebaseApp.initializeApp(this)
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 

@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -24,16 +25,28 @@ android {
 
 dependencies {
     def nav_version = "1.0.0-alpha07"
+    def lifecycle_version = "2.0.0"
+    def room_version = "2.1.0-alpha02"
+    def paging_version = "2.1.0-beta01"
+
+    def firebase_version = "16.0.5"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    //navigation
     implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version" // use -ktx for Kotlin
     implementation "android.arch.navigation:navigation-ui-ktx:$nav_version" // use -ktx for Kotlin
-
+    //viewmodel
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    //room
+    implementation "androidx.room:room-runtime:$room_version"
+    //pagin
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
 
-
+    //Firebase
+    implementation "com.google.firebase:firebase-database:$firebase_version"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
