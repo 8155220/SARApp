@@ -1,34 +1,33 @@
 package bo.edu.uagrm.sarapp.adapters
 
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import bo.edu.uagrm.sarapp.R
-import bo.edu.uagrm.sarapp.data.Persona
-import kotlinx.android.synthetic.main.item_list_persona.view.*
+import bo.edu.uagrm.sarapp.data.model.Persona
+import bo.edu.uagrm.sarapp.viewholders.PersonaViewHolder
 
 class PersonaAdapter internal constructor
-    () : RecyclerView.Adapter<PersonaAdapter.PersonaViewHolder>() {
-    private var mPersonas:ArrayList<Persona> = ArrayList();
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonaViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_persona,parent,false)
-        return PersonaViewHolder(view);
+    () : PagedListAdapter<Persona,RecyclerView.ViewHolder>(PERSONA_COMPARATOR) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return PersonaViewHolder.create(parent);
     }
 
-    fun setPersonas(list:ArrayList<Persona>){
-        mPersonas=list;
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val personaItem = getItem(position);
+        if (personaItem != null) {
+            (holder as PersonaViewHolder).bind(personaItem)
+        }
     }
-    override fun getItemCount(): Int {
-        return mPersonas.size;
-    }
-    override fun onBindViewHolder(holder: PersonaViewHolder, position: Int) {
-        val persona = mPersonas[position];
-        holder.nombreCompleto.text = "${persona.description}";
-    }
-    class PersonaViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        var nombreCompleto:TextView = itemView.textview_nombeCompleto;
+    companion object {
+        private val PERSONA_COMPARATOR = object : DiffUtil.ItemCallback<Persona>() {
+            override fun areItemsTheSame(oldItem: Persona, newItem: Persona): Boolean =
+                oldItem.name == newItem.name
+
+            override fun areContentsTheSame(oldItem: Persona, newItem: Persona): Boolean =
+                oldItem == newItem
+        }
     }
 }

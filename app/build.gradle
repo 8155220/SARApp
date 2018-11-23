@@ -1,10 +1,9 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -37,8 +36,10 @@ dependencies {
     implementation "android.arch.navigation:navigation-ui-ktx:$nav_version" // use -ktx for Kotlin
     //viewmodel
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     //room
     implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
     //pagin
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

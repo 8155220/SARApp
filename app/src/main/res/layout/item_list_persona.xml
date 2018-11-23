@@ -18,7 +18,18 @@
               xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="wrap_content">
     <TextView
-            android:id="@+id/textview_nombeCompleto"
+            android:id="@+id/textview_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="?android:attr/textColorPrimary"/>
+    <TextView
+            android:id="@+id/textview_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
