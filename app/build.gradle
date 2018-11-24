@@ -27,8 +27,9 @@ dependencies {
     def lifecycle_version = "2.0.0"
     def room_version = "2.1.0-alpha02"
     def paging_version = "2.1.0-beta01"
-
     def firebase_version = "16.0.5"
+    def rxjava_version = "2.2.4"
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //navigation
@@ -45,11 +46,12 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
-
     //Firebase
     implementation "com.google.firebase:firebase-database:$firebase_version"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha07'
+    //rxjava
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
 }
