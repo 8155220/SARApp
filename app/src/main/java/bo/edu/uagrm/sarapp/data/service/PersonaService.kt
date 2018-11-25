@@ -8,7 +8,7 @@ import com.google.firebase.database.*
 class PersonaService {
     private val db: FirebaseDatabase;
     private lateinit var dbRef:DatabaseReference;
-    private val PERSONA_PATH="animals"
+    private val PERSONA_PATH="personas"
 
     init {
         db = FirebaseDatabase.getInstance();

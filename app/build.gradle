@@ -54,4 +54,6 @@ dependencies {
     implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha07'
     //rxjava
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
+
 }

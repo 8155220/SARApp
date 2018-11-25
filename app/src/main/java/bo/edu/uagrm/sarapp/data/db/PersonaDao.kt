@@ -14,7 +14,7 @@ interface PersonaDao {
     fun insert(personas:List<Persona>)
 
 
-   // @Query("SELECT * FROM personas WHERE(name LIKE:queryString) OR (description LIKE :queryString) ORDER BY name DESC")
-    @Query("SELECT * FROM personas WHERE(name LIKE:queryString)  ORDER BY name DESC")
+   // @Query("SELECT * FROM personas WHERE(nombre LIKE:queryString) OR (description LIKE :queryString) ORDER BY nombre DESC")
+    @Query("SELECT * FROM personas WHERE(nombre LIKE:queryString)  ORDER BY nombre DESC")
     fun personasByName(queryString:String): DataSource.Factory<Integer, Persona>
 }

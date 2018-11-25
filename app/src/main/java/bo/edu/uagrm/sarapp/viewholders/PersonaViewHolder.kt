@@ -30,10 +30,10 @@ class PersonaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
     private fun showPersonaData(persona: Persona){
         this.persona = persona;
-        name.text = persona.name;
+        name.text = persona.nombre;
         var descriptionVisibility = View.GONE
-        if(persona.description!=null){
-            description.text = persona.description
+        if(persona.nombreCompleto!=null){
+            description.text = persona.nombreCompleto
             descriptionVisibility = View.VISIBLE
         }
         description.visibility = descriptionVisibility

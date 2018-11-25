@@ -20,6 +20,7 @@ import bo.edu.uagrm.sarapp.data.model.Persona
 import bo.edu.uagrm.sarapp.viewmodels.PersonaViewModel
 import kotlinx.android.synthetic.main.fragment_ficha_medica_list.view.*
 import androidx.core.view.MenuItemCompat.getActionView
+import androidx.recyclerview.widget.DividerItemDecoration
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.disposables.Disposable
@@ -55,6 +56,8 @@ class FichaMedicaListFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this, Injection.provideViewModelFactory(context as Context))
             .get(PersonaViewModel::class.java)
+        val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        list.addItemDecoration(decoration)
         initAdapter()
         query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
         

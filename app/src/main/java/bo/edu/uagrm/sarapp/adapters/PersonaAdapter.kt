@@ -24,7 +24,7 @@ class PersonaAdapter internal constructor
     companion object {
         private val PERSONA_COMPARATOR = object : DiffUtil.ItemCallback<Persona>() {
             override fun areItemsTheSame(oldItem: Persona, newItem: Persona): Boolean =
-                oldItem.name == newItem.name
+                oldItem.key == newItem.key
 
             override fun areContentsTheSame(oldItem: Persona, newItem: Persona): Boolean =
                 oldItem == newItem
