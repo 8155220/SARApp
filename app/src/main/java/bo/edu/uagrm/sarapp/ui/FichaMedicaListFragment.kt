@@ -21,6 +21,7 @@ import bo.edu.uagrm.sarapp.viewmodels.PersonaViewModel
 import kotlinx.android.synthetic.main.fragment_ficha_medica_list.view.*
 import androidx.core.view.MenuItemCompat.getActionView
 import androidx.recyclerview.widget.DividerItemDecoration
+import bo.edu.uagrm.sarapp.databinding.FragmentFichaMedicaListBinding
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.disposables.Disposable
@@ -34,6 +35,7 @@ class FichaMedicaListFragment : Fragment() {
     private lateinit  var list: RecyclerView;
     private val adapter = PersonaAdapter()
     private lateinit var viewModel: PersonaViewModel
+
     private var query:String = "";
     private lateinit var observer:Observable<String>
     private var subscription:Disposable?=null
@@ -43,44 +45,35 @@ class FichaMedicaListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view:View = inflater.inflate(R.layout.fragment_ficha_medica_list,container,false)
-        list = view.recycler_ficha_medica;
-        list.layoutManager = LinearLayoutManager(context);
-        // Inflate the layout for this fragment
+        val binding = FragmentFichaMedicaListBinding.inflate(inflater,container,false)
+        val adapter = PersonaAdapter();
+        binding.recyclerFichaMedica.adapter = adapter
+        binding.recyclerFichaMedica.layoutManager = LinearLayoutManager(binding.root.context)
+        subscribeUi(adapter,binding)
         setHasOptionsMenu(true)
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewModel = ViewModelProviders.of(this, Injection.provideViewModelFactory(context as Context))
-            .get(PersonaViewModel::class.java)
-        val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        list.addItemDecoration(decoration)
-        initAdapter()
+        binding.listSize = 0;
         query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
-        
-
-    }
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString(LAST_SEARCH_QUERY, viewModel.lastQueryValue())
+        return binding.root
     }
 
-    private fun initAdapter(){
-        list.adapter = adapter
+    private fun subscribeUi(adapter:PersonaAdapter,binding: FragmentFichaMedicaListBinding){
+        val factory = Injection.provideViewModelFactory(context as Context)
+        viewModel = ViewModelProviders.of(this, factory)
+            .get(PersonaViewModel::class.java)
         viewModel.personas.observe(this,Observer<PagedList<Persona>> {
             Log.d("Fragment FichaMedica", "list: ${it?.size}")
+            binding.listSize=it.size
             adapter.submitList(it)
         })
         viewModel.networkErrors.observe(this, Observer<String> {
             Toast.makeText(context, "\uD83D\uDE28 Wooops $it", Toast.LENGTH_LONG).show()
         })
     }
-    private fun initSearch(query: String) {
 
-        updateRepoListFromInput()
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(LAST_SEARCH_QUERY, viewModel.lastQueryValue())
     }
 
     private fun updateRepoListFromInput() {
@@ -104,7 +97,6 @@ class FichaMedicaListFragment : Fragment() {
         MenuItemCompat.expandActionView(mSearch);
         mSearchView.setQuery(query,false)
 
-
         observer = Observable.create(ObservableOnSubscribe<String> { observer ->
             mSearchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
                 override fun onQueryTextSubmit(query: String): Boolean {
@@ -112,7 +104,6 @@ class FichaMedicaListFragment : Fragment() {
                     //Log.d(TAG,query)
                     return false
                 }
-
                 override fun onQueryTextChange(newText: String): Boolean {
                     observer.onNext(newText!!)
                     //Log.d(TAG,newText)
@@ -127,20 +118,25 @@ class FichaMedicaListFragment : Fragment() {
         subscription = observer.subscribe{query ->
             Log.d(TAG,query)
             viewModel.searchPersona(query)
-        };
-    }
-
-  /*  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.itemId == R.id.action_search) {
-            return true;
         }
-        return false;
-    }*/
-
+    }
      override fun onDestroyView() {
         super.onDestroyView()
          Log.d(TAG,"DISPOSE")
          if(subscription!=null && !(subscription as Disposable).isDisposed )
              (subscription as Disposable).dispose()
     }
+
+
+    /*
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProviders.of(this, Injection.provideViewModelFactory(context as Context))
+            .get(PersonaViewModel::class.java)
+        val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        list.addItemDecoration(decoration)
+        initAdapter()
+        query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
+    }*/
 }

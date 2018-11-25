@@ -2,4 +2,6 @@
     <string name="app_name">SARApp</string>
     <string name="home">home</string>
     <string name="ficha_medica">Ficha Medica</string>
+
+    <string name="noDataFound">Nose Encontraron Resultados :( ,\nInicie otra busqueda</string>
 </resources>
