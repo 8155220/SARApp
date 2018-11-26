@@ -12,19 +12,18 @@ import kotlinx.android.synthetic.main.item_list_persona.view.*
 class PersonaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val name:TextView = view.textview_name;
     private val description:TextView = view.textview_description;
-
     private var persona: Persona? = null
-
     init{
 
     }
 
-    fun bind(persona: Persona?){
+    fun bind(listener:View.OnClickListener,persona: Persona?){
         if(persona==null){
             val reurces = itemView.resources
             name.text = "Cargando..."
             description.visibility = View.GONE
         }else {
+            itemView.setOnClickListener(listener)
             showPersonaData(persona)
         }
     }

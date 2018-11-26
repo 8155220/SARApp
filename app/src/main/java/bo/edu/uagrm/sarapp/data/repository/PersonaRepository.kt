@@ -25,6 +25,7 @@ class PersonaRepository
 
         return PersonaSearchResult(data,networkError)
     }
+    fun getPersona(key:String) = cache.getPersona(key)
 
     companion object {
         private const val DATABASE_PAGE_SIZE = 20;

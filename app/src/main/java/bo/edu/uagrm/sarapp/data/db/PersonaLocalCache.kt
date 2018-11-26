@@ -26,4 +26,5 @@ class PersonaLocalCache(private val personaDao: PersonaDao,
         Log.i("PersonaLOcalCach2",query)
         return personaDao.personasByName(query)
     }
+    fun getPersona(key:String) = personaDao.getPersona(key)
 }

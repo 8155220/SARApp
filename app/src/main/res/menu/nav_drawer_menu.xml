@@ -6,9 +6,9 @@
                 android:icon="@drawable/ic_home"
                 android:title="@string/home" />
         <item
-                android:id="@+id/ficha_medica_list_fragment_dest"
+                android:id="@+id/persona_list_fragment_dest"
                 android:icon="@drawable/ic_heal"
-                android:title="@string/ficha_medica" />
+                android:title="@string/personas" />
 
     </group>
 

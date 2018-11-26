@@ -17,21 +17,17 @@ import bo.edu.uagrm.sarapp.DI.Injection
 import bo.edu.uagrm.sarapp.R
 import bo.edu.uagrm.sarapp.adapters.PersonaAdapter
 import bo.edu.uagrm.sarapp.data.model.Persona
+import bo.edu.uagrm.sarapp.databinding.FragmentPersonaListBinding
 import bo.edu.uagrm.sarapp.viewmodels.PersonaViewModel
-import kotlinx.android.synthetic.main.fragment_ficha_medica_list.view.*
-import androidx.core.view.MenuItemCompat.getActionView
-import androidx.recyclerview.widget.DividerItemDecoration
-import bo.edu.uagrm.sarapp.databinding.FragmentFichaMedicaListBinding
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.disposables.Disposable
-import org.reactivestreams.Subscription
 import java.util.concurrent.TimeUnit
 
 
-class FichaMedicaListFragment : Fragment() {
+class PersonaListFragment : Fragment() {
 
-    private val TAG = FichaMedicaListFragment::class.java.canonicalName as String
+    private val TAG = PersonaListFragment::class.java.canonicalName as String
     private lateinit  var list: RecyclerView;
     private val adapter = PersonaAdapter()
     private lateinit var viewModel: PersonaViewModel
@@ -45,23 +41,23 @@ class FichaMedicaListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentFichaMedicaListBinding.inflate(inflater,container,false)
+        val binding = FragmentPersonaListBinding.inflate(inflater,container,false)
         val adapter = PersonaAdapter();
-        binding.recyclerFichaMedica.adapter = adapter
-        binding.recyclerFichaMedica.layoutManager = LinearLayoutManager(binding.root.context)
+        binding.recyclerPersona.adapter = adapter
+        binding.recyclerPersona.layoutManager = LinearLayoutManager(binding.root.context)
         subscribeUi(adapter,binding)
         setHasOptionsMenu(true)
-        binding.listSize = 0;
+        binding.listSize = 0
         query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
         return binding.root
     }
 
-    private fun subscribeUi(adapter:PersonaAdapter,binding: FragmentFichaMedicaListBinding){
+    private fun subscribeUi(adapter:PersonaAdapter,binding: FragmentPersonaListBinding){
         val factory = Injection.provideViewModelFactory(context as Context)
         viewModel = ViewModelProviders.of(this, factory)
             .get(PersonaViewModel::class.java)
         viewModel.personas.observe(this,Observer<PagedList<Persona>> {
-            Log.d("Fragment FichaMedica", "list: ${it?.size}")
+            Log.d(TAG, "list: ${it?.size}")
             binding.listSize=it.size
             adapter.submitList(it)
         })

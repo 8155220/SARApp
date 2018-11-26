@@ -9,7 +9,7 @@ class PersonaService {
     private val db: FirebaseDatabase;
     private lateinit var dbRef:DatabaseReference;
     private val PERSONA_PATH="personas"
-
+    private val TAG = PersonaService::class.java.canonicalName
     init {
         db = FirebaseDatabase.getInstance();
         dbRef=db.getReference(PERSONA_PATH)
@@ -21,6 +21,7 @@ class PersonaService {
         dbRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     if (dataSnapshot.exists()) {
+                        Log.d(TAG,"DataCambio")
                         onSuccess(dataSnapshot.getArrayValue(Persona::class.java))
                     }
                 }

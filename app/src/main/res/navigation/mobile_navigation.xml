@@ -4,10 +4,26 @@
             android:id="@+id/mobile_navigation"
             app:startDestination="@id/home_fragment_dest">
 
-    <fragment android:id="@+id/ficha_medica_list_fragment_dest" android:name="bo.edu.uagrm.sarapp.ui.FichaMedicaListFragment"
-              android:label="FichaMedicaListFragment"/>
+    <fragment android:id="@+id/persona_list_fragment_dest"
+              android:name="bo.edu.uagrm.sarapp.ui.PersonaListFragment"
+              android:label="Lista Personas">
+        <action android:id="@+id/action_persona_list_fragment_to_persona_detail_fragment"
+                app:destination="@id/persona_detail_fragment_dest" app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
 
     <fragment android:id="@+id/home_fragment_dest"
               android:name="bo.edu.uagrm.sarapp.ui.HomeFragment"
-              android:label="HomeFragment"/>
+              android:label="Inicio">
+    </fragment>
+
+    <fragment android:id="@+id/persona_detail_fragment_dest"
+              android:name="bo.edu.uagrm.sarapp.ui.PersonaDetailFragment"
+              android:label="Detalle de Persona">
+        <argument
+                android:name="personaId"
+                app:argType="string"/>
+    </fragment>
 </navigation>

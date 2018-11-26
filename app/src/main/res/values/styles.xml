@@ -8,4 +8,5 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="txtOutlined"  parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"></style>
 </resources>

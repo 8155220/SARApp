@@ -20,9 +20,9 @@ import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import bo.edu.uagrm.sarapp.data.db.PersonaLocalCache
 import bo.edu.uagrm.sarapp.data.db.SARDatabase
-import bo.edu.uagrm.sarapp.data.model.Persona
 import bo.edu.uagrm.sarapp.data.repository.PersonaRepository
 import bo.edu.uagrm.sarapp.data.service.PersonaService
+import bo.edu.uagrm.sarapp.viewmodels.PersonaDetailViewModelFactory
 import bo.edu.uagrm.sarapp.viewmodels.ViewModelFactory
 import java.util.concurrent.Executors
 
@@ -55,5 +55,9 @@ object Injection {
      */
     fun provideViewModelFactory(context: Context): ViewModelProvider.Factory {
         return ViewModelFactory(providePersonaRepository(context))
+    }
+
+    fun providePersonaDetailViewModelFactory(context:Context,personaId:String):ViewModelProvider.Factory{
+        return PersonaDetailViewModelFactory(providePersonaRepository(context),personaId)
     }
 }

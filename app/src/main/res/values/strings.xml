@@ -1,7 +1,28 @@
 <resources>
     <string name="app_name">SARApp</string>
     <string name="home">home</string>
-    <string name="ficha_medica">Ficha Medica</string>
+    <string name="personas">Personas</string>
 
     <string name="noDataFound">Nose Encontraron Resultados :( ,\nInicie otra busqueda</string>
+    <string name="test_data">Test Data </string>
+
+    <!--Informacion Personal-->
+    <string name="celular">Celular</string>
+    <string name="direccion">Direccion</string>
+    <string name="fechaNacimiento">Fecha de Nacimiento</string>
+    <string name="ci">Nº Carnet Identidad</string>
+    <string name="sexo">Sexo</string>
+    <string name="telefonoFijo">Telefono Fijo</string>
+    <string name="pais">Pais</string>
+    <string name="departamento">Departamento</string>
+    <string name="provincia">Provincia</string>
+    <string name="capital">Capital</string>
+    <string name="municipio">Municipio</string>
+    <string name="nombreTutor">Nombre Tutor</string>
+    <string name="celularTutor">Celular Tutor</string>
+    <string name="estado">Estado</string>
+    <string name="tipoPersona">Tipo Persona</string>
+    <string name="grado">Grado</string>
+    <string name="compania">Compañia</string>
+    <!--End Informacion Personal-->
 </resources>
