@@ -3,7 +3,7 @@
     <string name="home">home</string>
     <string name="personas">Personas</string>
 
-    <string name="noDataFound">Nose Encontraron Resultados :( ,\nInicie otra busqueda</string>
+    <string name="noDataFound">0 resultados, intente otra busqueda o actualice la base de datos</string>
     <string name="test_data">Test Data </string>
 
     <!--Informacion Personal-->

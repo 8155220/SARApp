@@ -18,9 +18,11 @@ import bo.edu.uagrm.sarapp.adapters.PersonaAdapter
 import bo.edu.uagrm.sarapp.data.model.Persona
 import bo.edu.uagrm.sarapp.databinding.FragmentPersonaListBinding
 import bo.edu.uagrm.sarapp.viewmodels.PersonaViewModel
+import com.google.android.material.snackbar.Snackbar
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.disposables.Disposable
+import kotlinx.android.synthetic.main.fragment_persona_list.*
 import java.util.concurrent.TimeUnit
 
 
@@ -45,6 +47,7 @@ class PersonaListFragment : Fragment() {
         binding.recyclerPersona.adapter = adapter
         binding.recyclerPersona.layoutManager = LinearLayoutManager(binding.root.context)
         subscribeUi(adapter,binding)
+        viewModel.searchPersona("")
         setHasOptionsMenu(true)
         binding.listSize = 0
         query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
@@ -55,16 +58,29 @@ class PersonaListFragment : Fragment() {
         val factory = Injection.provideViewModelFactory(context as Context)
         viewModel = ViewModelProviders.of(this, factory)
             .get(PersonaViewModel::class.java)
+
         viewModel.personas.observe(this,Observer<PagedList<Persona>> {
             Log.d(TAG, "list: ${it?.size}")
             binding.listSize=it.size
             adapter.submitList(it)
+            if(it?.size==0) Snackbar.make(binding.root,R.string.noDataFound, Snackbar.LENGTH_LONG).show()
         })
-        viewModel.networkErrors.observe(this, Observer<String> {
+
+        viewModel.updateDatabaseStatus.observe(this,Observer<Boolean>{
+            swipeToRefresh.isRefreshing = false
+        })
+        viewModel.updateDatabaseError.observe(this, Observer<String> {
             Toast.makeText(context, "\uD83D\uDE28 Wooops $it", Toast.LENGTH_LONG).show()
         })
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        swipeToRefresh.setColorSchemeResources(R.color.colorPrimary,R.color.colorPrimaryDark,R.color.colorAccent)
+        swipeToRefresh.setOnRefreshListener {
+            viewModel.update()
+        }
+    }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)

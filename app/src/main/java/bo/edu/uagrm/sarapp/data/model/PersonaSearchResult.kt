@@ -24,6 +24,6 @@ import androidx.paging.PagedList
  * and a LiveData<String> of network error state.
  */
 data class PersonaSearchResult(
-    val data: LiveData<PagedList<Persona>>,
-    val networkErrors: LiveData<String>
+    val data: LiveData<PagedList<Persona>>
+    //,val networkErrors: LiveData<String>
 )

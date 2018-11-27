@@ -35,7 +35,7 @@ class PersonaBoundaryCallBack (
     }
 
     private fun requestAndSaveData(query: String) {
-        if (isRequestInProgress) return
+       /* if (isRequestInProgress) return
 
         isRequestInProgress = true
         service.searchPersonas(query, NETWORK_PAGE_SIZE, { personas ->
@@ -46,44 +46,7 @@ class PersonaBoundaryCallBack (
         }, { error ->
             _networkErrors.postValue(error)
             isRequestInProgress = false
-        })
-
-        ///
-        /*
-        Log.d("PersonaBundaryCallBack","Antes de obtener Datos")
-        FirebaseDatabase.getInstance()
-            .getReference("animals")
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        Log.i("DataSnapshot :",dataSnapshot.value.toString())
-                        var elements = dataSnapshot.children.toMutableList();
-                        var lista: ArrayList<Persona> = ArrayList<Persona>();
-
-                        Log.d("PersonaBundaryCallBack",elements.toString())
-                        for (element in elements) {
-                            //lista.add(Persona(element.toString()));
-                            var persona: Persona = element.getValue(Persona::class.java) as Persona
-                            persona.key = element.key as String;
-                            lista.add(persona);
-                            Log.d("PersonaBundaryCallBack",persona.toString())
-                        }
-                        cache.insert(lista){
-                            //cache.insert(Arrays.asList(*lista)){
-                            lastRequestedPage++
-                            isRequestInProgress = false
-                        };
-                    }
-                }
-
-                override fun onCancelled(p0: DatabaseError) {
-                    Log.i("PersonalModel","Error")
-                    Log.i("PersonalModel",p0.message)
-                    _networkErrors.postValue(p0.message)
-                    isRequestInProgress = false
-                }
-            })*/
-        ////
+        })*/
     }
 
 }
