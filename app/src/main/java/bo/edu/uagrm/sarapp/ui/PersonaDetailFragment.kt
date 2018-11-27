@@ -12,7 +12,6 @@ import bo.edu.uagrm.sarapp.DI.Injection
 import bo.edu.uagrm.sarapp.R
 import bo.edu.uagrm.sarapp.databinding.FragmentPersonaDetailBinding
 import bo.edu.uagrm.sarapp.viewmodels.PersonaDetailViewModel
-import com.google.android.material.snackbar.Snackbar
 
 
 class PersonaDetailFragment : Fragment() {
@@ -27,10 +26,10 @@ class PersonaDetailFragment : Fragment() {
             .apply{
                 viewModel = personaDetailViewModel
                 setLifecycleOwner(this@PersonaDetailFragment)
-                fab.setOnClickListener{view->
+                /*fab.setOnClickListener{view->
                     //personaDetailViewModel.
                     Snackbar.make(view,R.string.test_data,Snackbar.LENGTH_SHORT).show()
-                }
+                }*/
             }
        personaDetailViewModel.persona.observe(this, Observer { persona->
 
