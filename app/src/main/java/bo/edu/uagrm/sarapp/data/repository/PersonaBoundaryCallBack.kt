@@ -7,11 +7,6 @@ import androidx.paging.PagedList
 import bo.edu.uagrm.sarapp.data.db.PersonaLocalCache
 import bo.edu.uagrm.sarapp.data.model.Persona
 import bo.edu.uagrm.sarapp.data.service.PersonaService
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import java.util.*
 
 class PersonaBoundaryCallBack (
     private val query: String,

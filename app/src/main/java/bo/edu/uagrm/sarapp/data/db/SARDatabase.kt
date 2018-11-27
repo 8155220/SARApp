@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import bo.edu.uagrm.sarapp.data.model.Persona
 
 @Database(entities = [Persona::class],
-    version = 7,
+    version = 8,
     exportSchema = false)
 abstract class SARDatabase : RoomDatabase(){
     abstract fun personasDao():PersonaDao
