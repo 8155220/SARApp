@@ -5,8 +5,10 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import bo.edu.uagrm.sarapp.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.google.android.material.chip.Chip
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -41,6 +43,39 @@ object BindingAdapters{
         }
     }
 
+    @BindingAdapter("bind:grado")
+    @JvmStatic fun grado(view: TextView, results:String){
+        view.text= getGrado(results)
+    }
+
+    @BindingAdapter("bind:sexo")
+    @JvmStatic
+    fun bindSexo(view: ImageView, sexo: String?) {
+        if (!sexo.isNullOrEmpty()) {
+            when (sexo) {
+                "masculino" -> view.setImageResource(R.drawable.ic_male)
+                "femenino" -> view.setImageResource(R.drawable.ic_female)
+            }
+
+        }
+    }
+
+    @BindingAdapter("bind:chipBackgroundColor")
+    @JvmStatic
+    fun bindChipBackGroundColor(view: Chip, estado: String?) {
+        if (!estado.isNullOrEmpty()) {
+            when (estado) {
+                "activo" -> view.setChipBackgroundColorResource(R.color.estadoActivo)
+                "pasivo" -> view.setChipBackgroundColorResource(R.color.estadoInactivo)
+            }
+
+        }
+    }
+
+
+
+
+
   /*  @BindingAdapter("wateringText")
     fun bindWateringText(textView: TextView, wateringInterval: Int) {
         val resources = textView.context.resources
@@ -52,4 +87,38 @@ object BindingAdapters{
             .append(" ")
             .italic { append(quantityString) }
     }*/
+
+
+    private fun getGrado(grado:String):String{
+        return when(grado){
+            "primerAnio"->{
+                "Voluntario 1er año"
+            }
+            "segundoAnio"->{
+                "Voluntario 2do año"
+            }
+            "tercerAnio"->{
+                "Voluntario 3er año"
+            }
+            "rescatistaInicial"->{
+                "Rescatista Inicial"
+            }
+            "rescatistaSegundo"->{
+                "Rescatista Segundo"
+            }
+            "rescatistaPrimero"->{
+                "Rescatista Primero"
+            }
+            "rescatistaEspecialista"->{
+                "Rescatista Especialista"
+            }
+            "rescatistaMaster"->{
+                "Rescatista Master"
+            }
+            "rescatistaComando"->{
+                "Rescatista Comando"
+            } else -> grado
+
+        }
+    }
 }

@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -87,11 +86,12 @@ class PersonaListFragment : Fragment() {
         inflater?.inflate(R.menu.app_bar_ficha_medica,menu)
 
         //SearchView
+
         val mSearch:MenuItem = menu!!.findItem(R.id.action_search)
         val mSearchView = mSearch.actionView as SearchView
 
-        MenuItemCompat.expandActionView(mSearch);
-        mSearchView.setQuery(query,false)
+        /*MenuItemCompat.expandActionView(mSearch);
+        mSearchView.setQuery(query,false)*/
 
         observer = Observable.create(ObservableOnSubscribe<String> { observer ->
             mSearchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{

@@ -14,47 +14,117 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<LinearLayout android:layout_height="wrap_content"
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.google.android.material.card.MaterialCardView
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:bind="http://schemas.android.com/tools"
+>
+
+    <data>
+        <variable
+                name="clickListener"
+                type="android.view.View.OnClickListener"/>
+        <variable
+                name="persona"
+                type="bo.edu.uagrm.sarapp.data.model.Persona"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="@dimen/card_size"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="15dp"
+            android:onClick="@{clickListener}"
     >
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="100dp">
-            <TextView
-                    android:id="@+id/textview_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:ellipsize="end"
-                    android:text="sadfsdfsafd"
-                    android:maxLines="1"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="?android:attr/textColorPrimary"/>
-            <TextView
-                    android:id="@+id/textview_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="sadfsdfsafd"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="?android:attr/textColorPrimary"/>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-</LinearLayout>
 
+        <ImageView
+                android:id="@+id/foto_url"
+                android:layout_width="78dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.48000002"
+                tools:srcCompat="@tools:sample/avatars"
+                bind:imageFromUrl="@{persona.fotoURL}"
+        />
 
+        <TextView
+                android:id="@+id/nombre_completo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/primary_text"
+                android:text="@{persona.nombreCompleto}"
+                android:textSize="@dimen/primaryText"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="13dp" app:layout_constraintStart_toEndOf="@+id/foto_url"
+                app:layout_constraintEnd_toStartOf="@+id/sexo" android:layout_marginEnd="264dp"
+                tools:text="Nombre Completo" app:layout_constraintHorizontal_bias="0.0"/>
+
+        <TextView
+                android:id="@+id/grado"
+                android:layout_width="0dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="7dp"
+                android:layout_marginBottom="36dp"
+                android:textColor="@color/secondary_text"
+
+                bind:grado="@{persona.grado}"
+
+                android:textSize="@dimen/secondaryText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.004"
+                app:layout_constraintStart_toEndOf="@+id/foto_url"
+                app:layout_constraintTop_toBottomOf="@+id/nombre_completo"
+                app:layout_constraintVertical_bias="0.0"
+                android:autoText="true" tools:text="grado"/>
+
+        <ImageView
+                android:id="@+id/sexo"
+                android:layout_width="20dp"
+                android:layout_height="13dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:sexo="@{persona.sexo}"
+        />
+
+        <com.google.android.material.chip.Chip
+                android:id="@+id/tipoPersona"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginBottom="8dp"
+                android:checkable="false"
+                android:text="@{persona.tipoPersona}"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/foto_url"
+                app:layout_constraintTop_toBottomOf="@+id/grado"
+        />
+        <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                bind:layout_editor_absoluteY="87dp"
+                bind:layout_editor_absoluteX="152dp"
+                android:id="@+id/chip"
+                bind:chipBackgroundColor="@{persona.estado}"
+                app:layout_constraintStart_toEndOf="@+id/tipoPersona"
+                android:text="@{persona.estado}"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:chipIconEnabled="false"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
 
 
 

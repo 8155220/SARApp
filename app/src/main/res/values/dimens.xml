@@ -2,6 +2,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="thumbnail_size">56dp</dimen>
+    <dimen name="card_size">120dp</dimen>
 
     <dimen name="app_bar_height">200dp</dimen>
 
@@ -9,6 +10,9 @@
     <dimen name="margin_small">8dp</dimen>
 
     <dimen name="plant_item_image_height">100dp</dimen>
+
+    <dimen name="primaryText">16sp</dimen>
+    <dimen name="secondaryText">12sp</dimen>
 
 
 </resources>

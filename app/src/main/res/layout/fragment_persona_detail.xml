@@ -57,7 +57,48 @@
                     android:layout_width="match_parent"
                           android:orientation="vertical"
                     android:layout_height="match_parent">
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal"
+                >
 
+                    <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Test"/>
+                    <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Entry"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:chipIcon="@drawable/ic_home"
+                            android:text="Home"/>
+
+                    <com.google.android.material.button.MaterialButton
+                            android:id="@+id/material_text_button"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Datos Fisicos"/>
+                    <com.google.android.material.button.MaterialButton
+                            android:id="@+id/material_text_button2"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Familiares"/>
+                    <com.google.android.material.button.MaterialButton
+                            android:id="@+id/material_text_button3"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Informacion Adicional"/>
+                    <com.google.android.material.button.MaterialButton
+                            android:id="@+id/material_text_button4"
+                            style="@style/Widget.MaterialComponents.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ficha Medica"/>
+
+                </LinearLayout>
                 <!--<androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">

@@ -1,5 +1,7 @@
 package bo.edu.uagrm.sarapp.adapters
 
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
@@ -7,26 +9,29 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import bo.edu.uagrm.sarapp.data.model.Persona
+import bo.edu.uagrm.sarapp.databinding.ItemListPersonaBinding
 import bo.edu.uagrm.sarapp.ui.PersonaListFragmentDirections
-import bo.edu.uagrm.sarapp.viewholders.PersonaViewHolder
 
 class PersonaAdapter internal constructor
-    () : PagedListAdapter<Persona,RecyclerView.ViewHolder>(PERSONA_COMPARATOR) {
+    () : PagedListAdapter<Persona,PersonaAdapter.PersonaViewHolder>(PERSONA_COMPARATOR) {
 
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val personaItem = getItem(position);
-        if (personaItem != null) {
-            (holder as PersonaViewHolder).bind(createOnClickListener(personaItem.key),personaItem)
+    override fun onBindViewHolder(holder: PersonaAdapter.PersonaViewHolder, position: Int) {
+        val personaItem = getItem(position) as Persona;
+
+        holder.apply {
+            bind(createOnClickListener(personaItem.key),personaItem)
+            itemView.tag=personaItem
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return PersonaViewHolder.create(parent);
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonaAdapter.PersonaViewHolder {
+        return PersonaViewHolder(ItemListPersonaBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     private fun createOnClickListener(personaId:String): View.OnClickListener{
         return View.OnClickListener {
+
             val direction = PersonaListFragmentDirections.actionPersonaListFragmentToPersonaDetailFragment(personaId)
             it.findNavController().navigate(direction)
         }
@@ -41,4 +46,19 @@ class PersonaAdapter internal constructor
                 oldItem == newItem
         }
     }
+
+
+    class PersonaViewHolder(private val binding: ItemListPersonaBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(listener: View.OnClickListener,item: Persona){
+            binding.apply {
+                Log.d("PersonaViewHolder","Click " )
+                clickListener = listener
+                persona = item
+                executePendingBindings()
+            }
+        }
+
+    }
+
 }
