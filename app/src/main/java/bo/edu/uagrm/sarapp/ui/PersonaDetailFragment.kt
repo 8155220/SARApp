@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import bo.edu.uagrm.sarapp.DI.Injection
 import bo.edu.uagrm.sarapp.R
 import bo.edu.uagrm.sarapp.databinding.FragmentPersonaDetailBinding
@@ -31,12 +32,16 @@ class PersonaDetailFragment : Fragment() {
                     Snackbar.make(view,R.string.test_data,Snackbar.LENGTH_SHORT).show()
                 }*/
             }
+
+       binding.fichaMedica.setOnClickListener{
+           val direction = PersonaDetailFragmentDirections.actionPersonaDetailFragmentDestToFichaMedicaFragment(personaId)
+           it.findNavController().navigate(direction)
+       }
        personaDetailViewModel.persona.observe(this, Observer { persona->
 
        })
-
-       // setHasOptionsMenu(true)
         return binding.root
-
     }
+
+
 }

@@ -25,5 +25,20 @@
         <argument
                 android:name="personaId"
                 app:argType="string"/>
+        <action
+            android:id="@+id/action_persona_detail_fragment_dest_to_fichaMedicaFragment"
+            app:destination="@id/fichaMedicaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_in_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/fichaMedicaFragment"
+        android:name="bo.edu.uagrm.sarapp.ui.FichaMedicaFragment"
+        android:label="FichaMedicaFragment" >
+        <argument
+            android:name="personaId"
+            app:argType="string" />
     </fragment>
 </navigation>

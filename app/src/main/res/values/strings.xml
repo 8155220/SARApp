@@ -24,5 +24,18 @@
     <string name="tipoPersona">Tipo Persona</string>
     <string name="grado">Grado</string>
     <string name="compania">Compañia</string>
+    <string name="add_alergia">Agregar Alergia</string>
     <!--End Informacion Personal-->
+
+    <!--Ficha medica-->
+    <string-array name="grupo_sanguineo_array">
+        <item>O RH negativo</item>
+        <item>O RH positivo</item>
+        <item>A RH negativo</item>
+        <item>A RH positivo</item>
+        <item>B RH negativo</item>
+        <item>B RH positivo</item>
+        <item>AB RH negativo</item>
+        <item>AB RH positivo</item>
+    </string-array>
 </resources>

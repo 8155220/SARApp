@@ -22,6 +22,7 @@ import bo.edu.uagrm.sarapp.data.db.PersonaLocalCache
 import bo.edu.uagrm.sarapp.data.db.SARDatabase
 import bo.edu.uagrm.sarapp.data.repository.PersonaRepository
 import bo.edu.uagrm.sarapp.data.service.PersonaService
+import bo.edu.uagrm.sarapp.viewmodels.FichaMedicaViewModelFactory
 import bo.edu.uagrm.sarapp.viewmodels.PersonaDetailViewModelFactory
 import bo.edu.uagrm.sarapp.viewmodels.ViewModelFactory
 import java.util.concurrent.Executors
@@ -59,5 +60,8 @@ object Injection {
 
     fun providePersonaDetailViewModelFactory(context:Context,personaId:String):ViewModelProvider.Factory{
         return PersonaDetailViewModelFactory(providePersonaRepository(context),personaId)
+    }
+    fun provideFichaMedicaViewModelFactory(context:Context,personaId:String):ViewModelProvider.Factory{
+        return FichaMedicaViewModelFactory(providePersonaRepository(context),personaId)
     }
 }

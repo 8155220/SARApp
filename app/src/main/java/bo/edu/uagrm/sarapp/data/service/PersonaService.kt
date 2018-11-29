@@ -40,7 +40,4 @@ class PersonaService {
             return PersonaService()
         }
     }
-
-
-
 }

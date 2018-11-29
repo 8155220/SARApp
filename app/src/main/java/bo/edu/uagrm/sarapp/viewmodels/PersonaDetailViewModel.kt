@@ -7,11 +7,13 @@ import bo.edu.uagrm.sarapp.data.repository.PersonaRepository
 
 class PersonaDetailViewModel
     (private val personarepository: PersonaRepository,private val personaId:String):ViewModel(){
-
+    private val TAG = PersonaDetailViewModel::class.java.canonicalName;
     val persona: LiveData<Persona>
 
     init {
         persona = personarepository.getPersona(personaId)
     }
+
+
 
 }
