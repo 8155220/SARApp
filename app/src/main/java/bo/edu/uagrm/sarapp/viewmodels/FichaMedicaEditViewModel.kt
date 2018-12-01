@@ -1,13 +1,12 @@
 package bo.edu.uagrm.sarapp.viewmodels
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import bo.edu.uagrm.sarapp.data.model.FichaMedica
 import bo.edu.uagrm.sarapp.data.repository.FichaMedicaRepository
 
-class FichaMedicaViewModel
+class FichaMedicaEditViewModel
 (private val fichaMedicaRepository: FichaMedicaRepository,
  private val personaId:String) : ViewModel(){
 
@@ -15,11 +14,8 @@ class FichaMedicaViewModel
     var onAddedItemAlergia = MutableLiveData<String>()
     var onAddedItemCirugia = MutableLiveData<String>()
     var fichaMedica:FichaMedica = FichaMedica(alergias = ArrayList(),cirugias = ArrayList())
-    var fichaMedicaLocal: LiveData<FichaMedica>
 
-    init {
-        fichaMedicaLocal = fichaMedicaRepository.getFichaMedicaLocal(personaId)
-    }
+
 
     public fun onAddAlergia(data:String?=""){
        if(data!=null){

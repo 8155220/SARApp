@@ -15,6 +15,8 @@ class FichaMedicaCache
             Log.d("FichaCacheLista",fichaMedicaDao.getFichasMedicas().toString())
             insertedFinished()
         }
-
     }
+
+    fun getFichaMedica(key:String) = fichaMedicaDao.getFichasMedicas(key)
+
 }

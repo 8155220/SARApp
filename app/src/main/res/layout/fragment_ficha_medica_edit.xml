@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="viewModel"
+                type="bo.edu.uagrm.sarapp.viewmodels.FichaMedicaViewModel"/>
+        <variable name="alergiaEditText" type="String"></variable>
+        <variable name="cirugiaEditText" type="String"></variable>
+    </data>
+
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:visibility="visible"
+                    android:id="@+id/constraintLayout"
+                    android:layout_height="wrap_content">
+
+                <Spinner
+                        android:id="@+id/spinnerGrupoSanguineo"
+                        android:layout_width="235dp"
+                        android:layout_height="37dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="17dp"
+                        android:entries="@array/grupo_sanguineo_array"
+                        android:selectedItemPosition="@={viewModel.selectedItem}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                <Switch
+                        android:id="@+id/chagas"
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onChagasChange(checked)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="72dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="Chagas"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.515"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="36dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Grupo Sanguineo"
+                        app:layout_constraintBottom_toTopOf="@+id/spinnerGrupoSanguineo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.027"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+
+                <Button
+                        android:id="@+id/btnSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="Button"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.543"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/listCirugias"/>
+
+                <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddAlergia"
+                        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                        android:onClick="@{()-> viewModel.onAddAlergia(alergiaEditText)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="120dp"
+                        android:layout_marginEnd="8dp"
+                        app:icon="@drawable/ic_plus"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textInputLayout11"
+                        app:layout_constraintTop_toTopOf="parent"
+                />
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout11"
+                        style="@style/txtOutlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="2dp"
+                        app:layout_constraintEnd_toStartOf="@+id/btnAddAlergia"
+                        app:layout_constraintHorizontal_bias="0.58"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/spinnerGrupoSanguineo">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@={alergiaEditText}"
+                            android:hint="@string/add_alergia"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/textInputLayout11"/>
+                <TextView
+                        android:text="ENFERMEDAD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp" app:layout_constraintEnd_toStartOf="@+id/textView3"
+                        android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.0"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/list"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+                <TextView
+                        android:text="APP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView3" app:layout_constraintEnd_toStartOf="@+id/textView4"
+                        android:layout_marginEnd="84dp"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/list"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+                <TextView
+                        android:text="APF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView4"
+                        app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="28dp"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/list"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+                <TextView
+                        android:text="HTA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp" android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+                <Switch
+
+                        android:checked="@={viewModel.fichaMedicaLocal.htaApp}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/htaApp"
+                        app:layout_constraintEnd_toStartOf="@+id/htaApf" android:layout_marginEnd="72dp"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+                <Switch
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onHtaApfChanged(checked)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/htaApf"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+                <TextView
+                        android:text="DIABETES"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView6" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView5"/>
+                <TextView
+                        android:text="CARDIOPATIAS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView7"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/textView6"/>
+                <TextView
+                        android:text="TUBERCULOSIS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView8" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView7"/>
+                <TextView
+                        android:text="CHAGAS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView9" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="7dp" app:layout_constraintTop_toBottomOf="@+id/textView8"/>
+                <TextView
+                        android:text="ASMA BRONQUIAL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView10" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="7dp" app:layout_constraintTop_toBottomOf="@+id/textView9"/>
+                <Switch
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onDiabetesAppChanged(checked)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/diabetesApp" app:layout_constraintEnd_toStartOf="@+id/diabetesApf"
+                        android:layout_marginEnd="72dp"
+                        app:layout_constraintTop_toBottomOf="@+id/htaApp"/>
+                <Switch
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onDiabetesApfChanged(checked)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/diabetesApf"
+                        app:layout_constraintTop_toBottomOf="@+id/htaApf" android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+                <Switch
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onCardiopatiaAppChanged(checked)}"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cardiopatiaApp"
+                        app:layout_constraintTop_toBottomOf="@+id/diabetesApp" app:layout_constraintEnd_toStartOf="@+id/cardiopatiaApf"
+                        android:layout_marginEnd="72dp"/>
+                <Switch
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onCardiopatiaApfChanged(checked)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cardiopatiaApf" android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/diabetesApf"/>
+                <Switch
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onTuberculosisAppChanged(checked)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tuberculosisApp"
+                        app:layout_constraintTop_toBottomOf="@+id/cardiopatiaApp" app:layout_constraintEnd_toStartOf="@+id/tuberculosisApf"
+                        android:layout_marginEnd="72dp"/>
+                <Switch
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onTuberculosisApfChanged(checked)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tuberculosisApf" android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/cardiopatiaApf"/>
+                <Switch
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onChagasAppChanged(checked)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:id="@+id/chagasApp"
+                        app:layout_constraintTop_toBottomOf="@+id/tuberculosisApp"
+                        app:layout_constraintEnd_toStartOf="@+id/chagasApf" android:layout_marginEnd="72dp"/>
+                <Switch
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onChagasApfChanged(checked)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/chagasApf" android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/tuberculosisApf"/>
+                <Switch
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onAsmaBronquialAppChanged(checked)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/asmaApp"
+                        app:layout_constraintTop_toBottomOf="@+id/chagasApp"
+                        app:layout_constraintEnd_toStartOf="@+id/asmaApf" android:layout_marginEnd="72dp"/>
+                <Switch
+                        android:onCheckedChanged="@{(switch,checked)->viewModel.onAsmaBronquialApfChanged(checked)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/asmaApf" android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/chagasApf"/>
+                <View
+                        android:id="@+id/divider2"
+                        android:layout_width="395dp"
+                        android:layout_height="4dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView10"
+                        android:layout_marginTop="84dp" app:layout_constraintHorizontal_bias="0.0"/>
+                <com.google.android.material.textfield.TextInputLayout
+                        style="@style/txtOutlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/divider2"
+                        app:layout_constraintEnd_toStartOf="@+id/btnAddCirugia" android:id="@+id/textInputLayout18">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:text="@={cirugiaEditText}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Agregar Cirugia"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddCirugia"
+                        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                        android:onClick="@{()-> viewModel.onAddCirugia(cirugiaEditText)}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_plus"
+                        app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="28dp"
+                        android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/divider2"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/listCirugias"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/textInputLayout18"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                        android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"/>
+                <com.google.android.material.textfield.TextInputLayout
+                        style="@style/txtOutlined"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/asmaApp" android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@={viewModel.fichaMedica.otras}"
+                            android:hint="OTRAS"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:visibility="gone"
+                    android:id="@+id/constraintProgressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <ProgressBar
+                        android:layout_width="117dp"
+                        android:layout_height="78dp"
+                        android:id="@+id/progressBar"
+                        android:gravity="center"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guideline"
+                        app:layout_constraintVertical_bias="0.389"/>
+                <androidx.constraintlayout.widget.Guideline
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" app:layout_constraintGuide_begin="656dp"
+                        android:id="@+id/guideline"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</layout>

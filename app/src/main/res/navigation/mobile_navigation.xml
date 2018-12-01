@@ -36,9 +36,15 @@
     <fragment
         android:id="@+id/fichaMedicaFragment"
         android:name="bo.edu.uagrm.sarapp.ui.FichaMedicaFragment"
-        android:label="FichaMedicaFragment" >
+        android:label="Ficha Medica" >
         <argument
             android:name="personaId"
             app:argType="string" />
+        <action android:id="@+id/action_fichaMedicaFragment_to_fichaMedicaEditFragment"
+                app:destination="@id/fichaMedicaEditFragment"/>
+    </fragment>
+    <fragment android:id="@+id/fichaMedicaEditFragment" android:name="bo.edu.uagrm.sarapp.ui.FichaMedicaEditFragment"
+              android:label="Editar Ficha Medica">
+        <argument android:name="personaId" app:argType="string"/>
     </fragment>
 </navigation>
