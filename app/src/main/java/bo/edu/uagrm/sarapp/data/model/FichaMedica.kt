@@ -1,8 +1,16 @@
 package bo.edu.uagrm.sarapp.data.model
 
+import androidx.room.Entity
+import androidx.room.TypeConverters
+import bo.edu.uagrm.sarapp.utils.Converters
+import bo.edu.uagrm.sarapp.utils.FirebaseObject
+@Entity(tableName="fichas_medicas")
 data class FichaMedica(
-    var tipoSangre:String = "",
+
+    var tipoSangre:String = "oNegativo",
+    @TypeConverters(Converters::class)
     var alergias:MutableList<String>,
+    @TypeConverters(Converters::class)
     var cirugias:MutableList<String>,
     var htaApp:Boolean=false,
     var htaApf:Boolean=false,
@@ -17,5 +25,5 @@ data class FichaMedica(
     var asmaBronquialApp:Boolean=false,
     var asmaBronquialApf:Boolean=false,
     var otras:String=""
-) {
+):FirebaseObject() {
 }

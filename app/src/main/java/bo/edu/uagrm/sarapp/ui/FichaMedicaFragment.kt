@@ -14,6 +14,7 @@ import bo.edu.uagrm.sarapp.DI.Injection
 import bo.edu.uagrm.sarapp.R
 import bo.edu.uagrm.sarapp.adapters.TextAdapter
 import bo.edu.uagrm.sarapp.databinding.FragmentFichaMedicaBinding
+import bo.edu.uagrm.sarapp.utils.getGrupoSanguineoFromPos
 import bo.edu.uagrm.sarapp.viewmodels.FichaMedicaViewModel
 
 class FichaMedicaFragment: Fragment() {
@@ -38,9 +39,12 @@ class FichaMedicaFragment: Fragment() {
 
         binding.btnSave.setOnClickListener {
             fichaMedicaViewModel.onSaveButton(personaId,alergiaAdapter.getList(),cirugiaAdapter.getList())
+            binding.constraintProgressBar.visibility=View.VISIBLE
+            binding.constraintLayout.visibility=View.GONE
         }
         fichaMedicaViewModel.selectedItem.observe(this, Observer { it->
             Log.d(TAG,"valor es :"+it)
+            fichaMedicaViewModel.fichaMedica.tipoSangre=getGrupoSanguineoFromPos(it)
         })
 
         fichaMedicaViewModel.onAddedItemAlergia.observe(this, Observer { it->

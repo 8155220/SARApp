@@ -2,25 +2,21 @@ package bo.edu.uagrm.sarapp.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import bo.edu.uagrm.sarapp.data.model.FichaMedica
-import bo.edu.uagrm.sarapp.data.repository.PersonaRepository
-import bo.edu.uagrm.sarapp.data.service.FichaMedicaService
-import bo.edu.uagrm.sarapp.utils.getGrupoSanguineoFromPos
+import bo.edu.uagrm.sarapp.data.repository.FichaMedicaRepository
 
 class FichaMedicaViewModel
-(private val personaRepository: PersonaRepository,private val personaId:String) : ViewModel(){
+(private val fichaMedicaRepository: FichaMedicaRepository,
+ private val personaId:String) : ViewModel(){
 
     var selectedItem = MutableLiveData<Int>()
     var onAddedItemAlergia = MutableLiveData<String>()
     var onAddedItemCirugia = MutableLiveData<String>()
     var fichaMedica:FichaMedica = FichaMedica(alergias = ArrayList(),cirugias = ArrayList())
 
-    val sSelectedItem = Transformations.map(selectedItem){
-        Log.d("sSelectedItem",it.toString())
-        fichaMedica.tipoSangre=getGrupoSanguineoFromPos(it)
-    }
+
+
     public fun onAddAlergia(data:String?=""){
        if(data!=null){
            onAddedItemAlergia.postValue(data)
@@ -57,8 +53,10 @@ class FichaMedicaViewModel
     public fun onSaveButton(personaId:String,listaAlergias:MutableList<String>,listaCirugias:MutableList<String>){
         fichaMedica.alergias=listaAlergias
         fichaMedica.cirugias=listaCirugias
-        val service = FichaMedicaService();
-        service.updateFichaMedica(personaId,fichaMedica)
+       // val service = FichaMedicaService();
+        //service.updateFichaMedica(personaId,fichaMedica)
+
+        fichaMedicaRepository.updateFichaMedica(personaId,fichaMedica)
     }
 
 

@@ -12,6 +12,7 @@ class FichaMedicaService {
     private lateinit var dbRef: DatabaseReference;
     private val PATH="fichasMedicas"
     private val TAG = FichaMedicaService::class.java.canonicalName
+    private val errorMessage = "Ocurrio un error intente mas tarde"
     init {
         db = FirebaseDatabase.getInstance();
         dbRef=db.getReference(PATH)
@@ -40,10 +41,21 @@ class FichaMedicaService {
         dbRef.child(personaId).setValue(data)
     }
 
+    fun updateFichaMedica(personaId:String,data: FichaMedica,onSuccess: (fichaMedica:FichaMedica) -> Unit,onError: (error: String) -> Unit){
+        //val key = dbRef.push().key.toString()
+        dbRef.child(personaId).setValue(data).addOnSuccessListener {
+            data.key=personaId
+            Log.d("FMService",data.toString())
+            onSuccess(data)
+
+        }.addOnFailureListener{
+            onError(errorMessage)
+        }
+    }
 
     companion object {
-        fun create():PersonaService{
-            return PersonaService()
+        fun create():FichaMedicaService{
+            return FichaMedicaService()
         }
     }
 }

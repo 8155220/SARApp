@@ -18,9 +18,12 @@ package bo.edu.uagrm.sarapp.DI
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
+import bo.edu.uagrm.sarapp.data.db.FichaMedicaCache
 import bo.edu.uagrm.sarapp.data.db.PersonaLocalCache
 import bo.edu.uagrm.sarapp.data.db.SARDatabase
+import bo.edu.uagrm.sarapp.data.repository.FichaMedicaRepository
 import bo.edu.uagrm.sarapp.data.repository.PersonaRepository
+import bo.edu.uagrm.sarapp.data.service.FichaMedicaService
 import bo.edu.uagrm.sarapp.data.service.PersonaService
 import bo.edu.uagrm.sarapp.viewmodels.FichaMedicaViewModelFactory
 import bo.edu.uagrm.sarapp.viewmodels.PersonaDetailViewModelFactory
@@ -41,6 +44,10 @@ object Injection {
         val database = SARDatabase.getInstance(context)
         return PersonaLocalCache(database.personasDao(), Executors.newSingleThreadExecutor())
     }
+    private fun provideFichaMedicaCache(context:Context):FichaMedicaCache{
+        val database = SARDatabase.getInstance(context)
+        return FichaMedicaCache(database.fichaMedicaDao(), Executors.newSingleThreadExecutor())
+    }
 
     /**
      * Creates an instance of [GithubRepository] based on the [GithubService] and a
@@ -48,6 +55,9 @@ object Injection {
      */
     private fun providePersonaRepository(context: Context): PersonaRepository {
         return PersonaRepository(PersonaService.create(), provideCache(context))
+    }
+    private fun provideFichaMedicaRepository(context: Context): FichaMedicaRepository {
+        return FichaMedicaRepository(FichaMedicaService.create(), provideFichaMedicaCache(context))
     }
 
     /**
@@ -62,6 +72,6 @@ object Injection {
         return PersonaDetailViewModelFactory(providePersonaRepository(context),personaId)
     }
     fun provideFichaMedicaViewModelFactory(context:Context,personaId:String):ViewModelProvider.Factory{
-        return FichaMedicaViewModelFactory(providePersonaRepository(context),personaId)
+        return FichaMedicaViewModelFactory(provideFichaMedicaRepository(context),personaId)
     }
 }
