@@ -3,36 +3,43 @@
     <data>
 
     </data>
-    <androidx.drawerlayout.widget.DrawerLayout
-            android:id="@+id/drawer_layout"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/activityCordinator"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <LinearLayout
+
+        <androidx.drawerlayout.widget.DrawerLayout
+                android:id="@+id/drawer_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-            <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimary"
-                    android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
-
-            <fragment
-                    android:id="@+id/nav_host_fragment"
-                    android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_height="match_parent">
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:defaultNavHost="true"
-                    app:navGraph="@navigation/mobile_navigation"/>
-        </LinearLayout>
+                    android:orientation="vertical">
 
-        <com.google.android.material.navigation.NavigationView
-                android:id="@+id/nav_view"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
-                app:menu="@menu/nav_drawer_menu"/>
-    </androidx.drawerlayout.widget.DrawerLayout>
+                <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+
+                <fragment
+                        android:id="@+id/nav_host_fragment"
+                        android:name="androidx.navigation.fragment.NavHostFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:defaultNavHost="true"
+                        app:navGraph="@navigation/mobile_navigation"/>
+            </LinearLayout>
+
+            <com.google.android.material.navigation.NavigationView
+                    android:id="@+id/nav_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    app:menu="@menu/nav_drawer_menu"/>
+        </androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>

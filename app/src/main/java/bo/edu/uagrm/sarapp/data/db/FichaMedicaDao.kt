@@ -20,5 +20,5 @@ interface FichaMedicaDao {
     fun getFichasMedicas():MutableList<FichaMedica>
 
     @Query("SELECT * FROM fichas_medicas where `key`=:key")
-    fun getFichasMedicas(key:String):LiveData<FichaMedica>
+    fun getFichaMedica(key:String):LiveData<FichaMedica>
 }

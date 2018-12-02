@@ -1,6 +1,5 @@
 package bo.edu.uagrm.sarapp.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -20,18 +19,14 @@ class PersonaViewModel(private val repository:PersonaRepository) : ViewModel() {
 
     private val update = MutableLiveData<Boolean>()
     private val updateDatabaseResult: LiveData<PersonaUpdateDatabaseResult> = Transformations.map(update){
-        Log.d("personaViewMOdel","Entro updateDatabaseResult")
         repository.updateLocalDatabase()
     }
     val updateDatabaseStatus:LiveData<Boolean> = Transformations.switchMap(updateDatabaseResult){it->it.data}
     val updateDatabaseError:LiveData<String> = Transformations.switchMap(updateDatabaseResult){it->it.networkErrors}
 
     val personas:LiveData<PagedList<Persona>> = Transformations.switchMap(personaResult) { it -> it.data }
-
     //val networkErrors:LiveData<String> = Transformations.switchMap(personaResult){it->it.networkErrors}
 
-
-    //private val repository = PersonaRepository()
 
     fun searchPersona(queryString:String){
         queryLiveData.postValue(queryString)

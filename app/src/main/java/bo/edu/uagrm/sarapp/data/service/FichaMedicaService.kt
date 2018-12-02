@@ -4,6 +4,7 @@ import android.util.Log
 import bo.edu.uagrm.sarapp.data.model.FichaMedica
 import bo.edu.uagrm.sarapp.data.model.Persona
 import bo.edu.uagrm.sarapp.utils.getArrayValue
+import bo.edu.uagrm.sarapp.utils.getSingleValue
 import com.google.firebase.database.*
 
 class FichaMedicaService {
@@ -36,10 +37,6 @@ class FichaMedicaService {
         })
 
     }
-    fun updateFichaMedica(personaId:String,data: FichaMedica){
-        //val key = dbRef.push().key.toString()
-        dbRef.child(personaId).setValue(data)
-    }
 
     fun updateFichaMedica(personaId:String,data: FichaMedica,onSuccess: (fichaMedica:FichaMedica) -> Unit,onError: (error: String) -> Unit){
         //val key = dbRef.push().key.toString()
@@ -51,6 +48,20 @@ class FichaMedicaService {
         }.addOnFailureListener{
             onError(errorMessage)
         }
+    }
+
+    fun updateFichaMedicaLocalDbFromFirebase(personaId:String,onSuccess: (fichaMedica:FichaMedica) -> Unit,onError: (error: String) -> Unit){
+        dbRef.child(personaId).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    onSuccess(dataSnapshot.getSingleValue(FichaMedica::class.java))
+                }
+            }
+            override fun onCancelled(p0: DatabaseError) {
+                Log.i("FichaMedicaService","Error")
+                onError(p0.message)
+            }
+        })
     }
 
     companion object {

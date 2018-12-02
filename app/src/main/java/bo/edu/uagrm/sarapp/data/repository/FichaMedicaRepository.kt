@@ -10,7 +10,7 @@ class FichaMedicaRepository
     (private val service: FichaMedicaService,
      private val cache: FichaMedicaCache
 ){
-    private var updateSucess = MutableLiveData<Boolean>()
+    private var updateSucess = MutableLiveData<FichaMedica>()
     private var networkError = MutableLiveData<String>()
     fun getFichaMedicaFromFirebase(personaId:String){
         //service.
@@ -20,7 +20,7 @@ class FichaMedicaRepository
         //service.
         service.updateFichaMedica(personaId,data,{ fichaMedica ->
             cache.insert(fichaMedica){
-                updateSucess.postValue(true)
+                updateSucess.postValue(fichaMedica)
             }
         },{error ->
             networkError.postValue(error)
@@ -29,6 +29,16 @@ class FichaMedicaRepository
         return FichaMedicaResult(updateSucess,networkError)
     }
 
+    fun updateLocalDB(personaId:String):FichaMedicaResult{
+        service.updateFichaMedicaLocalDbFromFirebase(personaId,{ fichaMedica ->
+            cache.insert(fichaMedica){
+                updateSucess.postValue(fichaMedica)
+            }
+        },{error ->
+            networkError.postValue(error)
+        })
+        return FichaMedicaResult(updateSucess,networkError)
+    }
     fun getFichaMedicaLocal(personaId:String)=cache.getFichaMedica(personaId)
 
 }

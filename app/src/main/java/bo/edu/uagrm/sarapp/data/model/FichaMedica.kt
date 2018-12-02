@@ -9,9 +9,9 @@ data class FichaMedica(
 
     var tipoSangre:String = "oNegativo",
     @TypeConverters(Converters::class)
-    var alergias:MutableList<String>,
+    var alergias:MutableList<String> = ArrayList(),
     @TypeConverters(Converters::class)
-    var cirugias:MutableList<String>,
+    var cirugias:MutableList<String> = ArrayList(),
     var htaApp:Boolean=false,
     var htaApf:Boolean=false,
     var diabetesApp:Boolean=false,

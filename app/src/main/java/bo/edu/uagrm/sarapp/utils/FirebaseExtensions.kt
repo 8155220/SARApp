@@ -18,6 +18,13 @@ fun <T> DataSnapshot.getArrayValue(clazz: Class<T>): List<T> {
             result.add(item)
         }
     }
-
     return result
+}
+
+fun <T> DataSnapshot.getSingleValue(clazz:Class<T>):T {
+    val item = this.getValue(clazz)
+    item?.let {
+        (item as FirebaseObject).key = this.key as String
+    }
+    return item as T
 }

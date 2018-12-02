@@ -38,6 +38,8 @@
         <item>AB RH negativo</item>
         <item>AB RH positivo</item>
         <item>NO ESPECIFICADO</item>
-
     </string-array>
+    <string name="SyncSuccessMessage">Sincronizado Correctamente</string>
+    <string name="UpdateSuccessMessage">Actualizado Correctamente</string>
+    <string name="UpdateErrorMessage">Ocurrio un error, intente mas tarde</string>
 </resources>

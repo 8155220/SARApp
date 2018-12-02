@@ -29,7 +29,7 @@ class TextAdapter internal constructor() : RecyclerView.Adapter<TextAdapter.Text
     }
 
     public fun getList()= list
-    public fun setList(newList:MutableList<String>){
+    public fun setList(newList:MutableList<String> = ArrayList()){
         list=newList
         notifyItemRangeInserted(0,list.size)
     }

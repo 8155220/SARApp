@@ -23,6 +23,6 @@ import androidx.lifecycle.LiveData
  * and a LiveData<String> of network error state.
  */
 data class FichaMedicaResult(
-    val data: LiveData<Boolean>
+    val data: LiveData<FichaMedica>
     ,val networkErrors: LiveData<String>
 )

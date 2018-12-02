@@ -25,6 +25,7 @@ import bo.edu.uagrm.sarapp.data.repository.FichaMedicaRepository
 import bo.edu.uagrm.sarapp.data.repository.PersonaRepository
 import bo.edu.uagrm.sarapp.data.service.FichaMedicaService
 import bo.edu.uagrm.sarapp.data.service.PersonaService
+import bo.edu.uagrm.sarapp.viewmodels.FichaMedicaEditViewModelFactory
 import bo.edu.uagrm.sarapp.viewmodels.FichaMedicaViewModelFactory
 import bo.edu.uagrm.sarapp.viewmodels.PersonaDetailViewModelFactory
 import bo.edu.uagrm.sarapp.viewmodels.ViewModelFactory
@@ -73,5 +74,8 @@ object Injection {
     }
     fun provideFichaMedicaViewModelFactory(context:Context,personaId:String):ViewModelProvider.Factory{
         return FichaMedicaViewModelFactory(provideFichaMedicaRepository(context),personaId)
+    }
+    fun provideFichaMedicaEditViewModelFactory(context:Context,personaId:String):ViewModelProvider.Factory{
+        return FichaMedicaEditViewModelFactory(provideFichaMedicaRepository(context),personaId)
     }
 }

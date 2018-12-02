@@ -7,254 +7,260 @@
                 name="viewModel"
                 type="bo.edu.uagrm.sarapp.viewmodels.FichaMedicaViewModel"/>
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/swipeToRefresh">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
-        <TextView
-                android:text="Grupo Sanguineo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView11"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp" android:layout_marginTop="32dp"
-                app:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-                android:text="Alergias :"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView12"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView11"
-                android:layout_marginStart="16dp" app:layout_constraintStart_toStartOf="parent"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.fichaMedicaLocal.tipoSangre}"
-                android:id="@+id/textView13" tools:text="O R H Positivo"
-                app:layout_constraintStart_toEndOf="@+id/textView11" android:layout_marginStart="12dp"
-                android:layout_marginTop="32dp" app:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView14"
-                android:text="@{viewModel.fichaMedicaLocal.alergias.toString()}"
-                app:layout_constraintStart_toEndOf="@+id/textView12"
-                android:layout_marginStart="60dp" tools:text="Piña,, \n Naranja,\n Naranja,\n Naranja"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView12" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="100dp" app:layout_constraintHorizontal_bias="0.0"/>
-        <TextView
-                android:text="ENFERMEDAD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView15"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView14"/>
-        <TextView
-                android:text="APP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView16"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView14"
-                android:layout_marginEnd="90dp"
-                app:layout_constraintEnd_toEndOf="parent"/>
-        <TextView
-                android:text="APF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView17"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView14"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-                app:layout_constraintStart_toEndOf="@+id/textView16" android:layout_marginStart="8dp"
-                app:layout_constraintHorizontal_bias="1.0"/>
-        <TextView
-                android:text="HTA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView18" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView15"/>
-        <TextView
-                android:text="DIABETES"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-                android:id="@+id/textView19" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView18"/>
-        <TextView
-                android:text="CARDIOPATIAS"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView20" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView19"/>
-        <TextView
-                android:text="TUBERCULSIS"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView21" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView20"/>
-        <TextView
-                android:text="CHAGAS"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView22" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView21"/>
-        <TextView
-                android:text="ASMA BRONQUIAL"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView23" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView22"/>
-        <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/htaApp"
-                android:checked="@{viewModel.fichaMedicaLocal.htaApp}"
-                android:clickable="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="84dp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView18"/>
+            <TextView
+                    android:text="Grupo Sanguineo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView11"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                    android:text="Alergias :"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView12"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView11"
+                    android:layout_marginStart="16dp" app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.fichaMedicaLocal.tipoSangre}"
+                    android:id="@+id/textView13" tools:text="O R H Positivo"
+                    app:layout_constraintStart_toEndOf="@+id/textView11" android:layout_marginStart="12dp"
+                    android:layout_marginTop="32dp" app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView14"
+                    android:text="@{viewModel.fichaMedicaLocal.alergias.toString()}"
+                    app:layout_constraintStart_toEndOf="@+id/textView12"
+                    android:layout_marginStart="60dp" tools:text="Piña,, \n Naranja,\n Naranja,\n Naranja"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textView12" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="100dp" app:layout_constraintHorizontal_bias="0.0"/>
+            <TextView
+                    android:text="ENFERMEDAD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView15"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView14"/>
+            <TextView
+                    android:text="APP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView16"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView14"
+                    android:layout_marginEnd="90dp"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                    android:text="APF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView17"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView14"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView16" android:layout_marginStart="8dp"
+                    app:layout_constraintHorizontal_bias="1.0"/>
+            <TextView
+                    android:text="HTA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView18" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15"/>
+            <TextView
+                    android:text="DIABETES"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    android:id="@+id/textView19" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView18"/>
+            <TextView
+                    android:text="CARDIOPATIAS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView20" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19"/>
+            <TextView
+                    android:text="TUBERCULSIS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView21" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20"/>
+            <TextView
+                    android:text="CHAGAS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView22" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21"/>
+            <TextView
+                    android:text="ASMA BRONQUIAL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView23" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView22"/>
+            <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/htaApp"
+                    android:checked="@{viewModel.fichaMedicaLocal.htaApp}"
+                    android:clickable="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="84dp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textView18"/>
 
 
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_edit"
-                android:id="@+id/imgEdit"
-                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-                android:layout_marginTop="36dp"
-                app:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-                android:text="Otras  Enfermedades"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView24" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/textView23"/>
-        <TextView
-                android:text="@{viewModel.fichaMedicaLocal.otras}"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView25" app:layout_constraintStart_toEndOf="@+id/textView24"
-                android:layout_marginStart="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="100dp" app:layout_constraintHorizontal_bias="0.0"
-                tools:text="Resfrio" android:layout_marginTop="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView23"/>
-        <TextView
-                android:text="Cirugias o Fracturas :"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-                android:id="@+id/textView26"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/textView25"/>
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.fichaMedicaLocal.cirugias.toString()}"
-                android:id="@+id/textView27"
-                android:layout_marginStart="25dp"
-                app:layout_constraintStart_toEndOf="@+id/textView26" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="100dp" tools:text="Fractura Pierna,Dolor " android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/textView25" app:layout_constraintHorizontal_bias="1.0"/>
-        <View
-                android:id="@+id/divider"
-                android:layout_width="0dp"
-                android:layout_height="5dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView27" android:layout_marginTop="16dp"/>
-        <Switch
-                android:checked="@{viewModel.fichaMedicaLocal.htaApf}"
-                android:clickable="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/htaApf" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView18"/>
-        <Switch
-                android:checked="@{viewModel.fichaMedicaLocal.diabetesApp}"
-                android:clickable="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/diabetesApp" android:layout_marginEnd="84dp"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBaseline_toBaselineOf="@+id/textView19"/>
-        <Switch
-                android:checked="@{viewModel.fichaMedicaLocal.diabetesApf}"
-                android:clickable="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/diabetesApf" android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBaseline_toBaselineOf="@+id/diabetesApp"/>
-        <Switch
-                android:checked="@{viewModel.fichaMedicaLocal.cardiopatiaApp}"
-                android:clickable="false"
-                android:layout_width="wrap_content"
-                android:layout_height="13dp" android:id="@+id/cardiopatiaApp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView20" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="84dp"/>
-        <Switch
-                android:checked="@{viewModel.fichaMedicaLocal.cardiopatiaApf}"
-                android:clickable="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/cardiopatiaApf" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp" app:layout_constraintBaseline_toBaselineOf="@+id/cardiopatiaApp"/>
-        <Switch
-                android:checked="@{viewModel.fichaMedicaLocal.tuberculosisApp}"
-                android:clickable="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tuberculosisApp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView21"
-                android:layout_marginEnd="84dp" app:layout_constraintEnd_toEndOf="parent"/>
-        <Switch
-                android:checked="@{viewModel.fichaMedicaLocal.tuberculosisApf}"
-                android:clickable="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tuberculosisApf" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/tuberculosisApp"/>
-        <Switch
-                android:checked="@{viewModel.fichaMedicaLocal.chagasApp}"
-                android:clickable="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/chagasApp" android:layout_marginEnd="84dp" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView22"/>
-        <Switch
-                android:checked="@{viewModel.fichaMedicaLocal.chagasApf}"
-                android:clickable="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/chagasApf" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBaseline_toBaselineOf="@+id/chagasApp"/>
-        <Switch
-                android:checked="@{viewModel.fichaMedicaLocal.asmaBronquialApp}"
-                android:layout_width="wrap_content"
-                android:clickable="false"
-                android:layout_height="wrap_content"
-                android:id="@+id/asmaBronquialApp" android:layout_marginEnd="84dp"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBaseline_toBaselineOf="@+id/textView23"/>
-        <Switch
-                android:checked="@{viewModel.fichaMedicaLocal.asmaBronquialApf}"
-                android:layout_width="wrap_content"
-                android:clickable="false"
-                android:layout_height="wrap_content"
-                android:id="@+id/switch11" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/asmaBronquialApp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_edit"
+                    android:id="@+id/imgEdit"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            <TextView
+                    android:text="Otras  Enfermedades"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView24" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/textView23"/>
+            <TextView
+                    android:text="@{viewModel.fichaMedicaLocal.otras}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView25" app:layout_constraintStart_toEndOf="@+id/textView24"
+                    android:layout_marginStart="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="100dp" app:layout_constraintHorizontal_bias="0.0"
+                    tools:text="Resfrio" android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView23"/>
+            <TextView
+                    android:text="Cirugias o Fracturas :"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    android:id="@+id/textView26"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/textView25"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.fichaMedicaLocal.cirugias.toString()}"
+                    android:id="@+id/textView27"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView26" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="100dp" tools:text="Fractura Pierna,Dolor " android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView25" app:layout_constraintHorizontal_bias="1.0"/>
+            <View
+                    android:id="@+id/divider"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView27" android:layout_marginTop="16dp"/>
+            <Switch
+                    android:checked="@{viewModel.fichaMedicaLocal.htaApf}"
+                    android:clickable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/htaApf" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textView18"/>
+            <Switch
+                    android:checked="@{viewModel.fichaMedicaLocal.diabetesApp}"
+                    android:clickable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diabetesApp" android:layout_marginEnd="84dp"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBaseline_toBaselineOf="@+id/textView19"/>
+            <Switch
+                    android:checked="@{viewModel.fichaMedicaLocal.diabetesApf}"
+                    android:clickable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/diabetesApf" android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/diabetesApp"/>
+            <Switch
+                    android:checked="@{viewModel.fichaMedicaLocal.cardiopatiaApp}"
+                    android:clickable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="13dp" android:id="@+id/cardiopatiaApp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textView20" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="84dp"/>
+            <Switch
+                    android:checked="@{viewModel.fichaMedicaLocal.cardiopatiaApf}"
+                    android:clickable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cardiopatiaApf" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" app:layout_constraintBaseline_toBaselineOf="@+id/cardiopatiaApp"/>
+            <Switch
+                    android:checked="@{viewModel.fichaMedicaLocal.tuberculosisApp}"
+                    android:clickable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tuberculosisApp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textView21"
+                    android:layout_marginEnd="84dp" app:layout_constraintEnd_toEndOf="parent"/>
+            <Switch
+                    android:checked="@{viewModel.fichaMedicaLocal.tuberculosisApf}"
+                    android:clickable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tuberculosisApf" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/tuberculosisApp"/>
+            <Switch
+                    android:checked="@{viewModel.fichaMedicaLocal.chagasApp}"
+                    android:clickable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chagasApp" android:layout_marginEnd="84dp" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/textView22"/>
+            <Switch
+                    android:checked="@{viewModel.fichaMedicaLocal.chagasApf}"
+                    android:clickable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chagasApf" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/chagasApp"/>
+            <Switch
+                    android:checked="@{viewModel.fichaMedicaLocal.asmaBronquialApp}"
+                    android:layout_width="wrap_content"
+                    android:clickable="false"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/asmaBronquialApp" android:layout_marginEnd="84dp"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBaseline_toBaselineOf="@+id/textView23"/>
+            <Switch
+                    android:checked="@{viewModel.fichaMedicaLocal.asmaBronquialApf}"
+                    android:layout_width="wrap_content"
+                    android:clickable="false"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/switch11" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/asmaBronquialApp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 </layout>
