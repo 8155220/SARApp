@@ -8,7 +8,7 @@ import bo.edu.uagrm.sarapp.databinding.ItemListTextBinding
 
 class TextAdapter internal constructor() : RecyclerView.Adapter<TextAdapter.TextViewHolder>(){
 
-    private val list:MutableList<String> = ArrayList()
+    private var list:MutableList<String> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextAdapter.TextViewHolder {
         return TextViewHolder(ItemListTextBinding.inflate(LayoutInflater.from(parent.context),parent,false))
@@ -29,6 +29,10 @@ class TextAdapter internal constructor() : RecyclerView.Adapter<TextAdapter.Text
     }
 
     public fun getList()= list
+    public fun setList(newList:MutableList<String>){
+        list=newList
+        notifyItemRangeInserted(0,list.size)
+    }
 
 
     override fun getItemCount() = list.size

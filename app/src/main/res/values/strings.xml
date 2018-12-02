@@ -37,5 +37,7 @@
         <item>B RH positivo</item>
         <item>AB RH negativo</item>
         <item>AB RH positivo</item>
+        <item>NO ESPECIFICADO</item>
+
     </string-array>
 </resources>

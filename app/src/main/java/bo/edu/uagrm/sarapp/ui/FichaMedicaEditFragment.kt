@@ -1,7 +1,6 @@
 package bo.edu.uagrm.sarapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import bo.edu.uagrm.sarapp.DI.Injection
 import bo.edu.uagrm.sarapp.R
 import bo.edu.uagrm.sarapp.adapters.TextAdapter
+import bo.edu.uagrm.sarapp.data.model.FichaMedica
 import bo.edu.uagrm.sarapp.databinding.FragmentFichaMedicaEditBinding
 import bo.edu.uagrm.sarapp.utils.getGrupoSanguineoFromPos
+import bo.edu.uagrm.sarapp.utils.getPosFromGrupoSanguineo
 import bo.edu.uagrm.sarapp.viewmodels.FichaMedicaViewModel
 
 class FichaMedicaEditFragment: Fragment() {
@@ -42,9 +43,18 @@ class FichaMedicaEditFragment: Fragment() {
             binding.constraintProgressBar.visibility=View.VISIBLE
             binding.constraintLayout.visibility=View.GONE
         }
+
+        fichaMedicaViewModel.fichaMedicaLocal.observe(this, Observer { it->
+            alergiaAdapter.setList(it.alergias)
+            cirugiaAdapter.setList(it.cirugias)
+            binding.spinnerGrupoSanguineo.setSelection(getPosFromGrupoSanguineo(it.tipoSangre))
+        })
+
+
         fichaMedicaViewModel.selectedItem.observe(this, Observer { it->
-            Log.d(TAG,"valor es :"+it)
-            fichaMedicaViewModel.fichaMedica.tipoSangre=getGrupoSanguineoFromPos(it)
+            //fichaMedicaViewModel.fichaMedica.tipoSangre=getGrupoSanguineoFromPos(it)
+            (fichaMedicaViewModel.fichaMedicaLocal.value as FichaMedica).tipoSangre =getGrupoSanguineoFromPos(it)
+
         })
 
         fichaMedicaViewModel.onAddedItemAlergia.observe(this, Observer { it->

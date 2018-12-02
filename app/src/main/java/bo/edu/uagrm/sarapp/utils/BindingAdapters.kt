@@ -3,6 +3,7 @@ package bo.edu.uagrm.sarapp.utils
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import bo.edu.uagrm.sarapp.R
@@ -120,5 +121,13 @@ object BindingAdapters{
             } else -> grado
 
         }
+    }
+
+    @BindingAdapter("bind:defaultSelection")
+    @JvmStatic
+    fun setSelection(spinner: Spinner, value:String="AB RH positivo") {
+        if(value!=null && spinner!=null)
+        spinner.setSelection(getPosFromGrupoSanguineo(value))
+
     }
 }
