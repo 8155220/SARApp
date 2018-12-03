@@ -1,8 +1,9 @@
 package bo.edu.uagrm.sarapp.data.service
 
+import android.util.Log
 import bo.edu.uagrm.sarapp.data.model.RevicionMedica
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import bo.edu.uagrm.sarapp.utils.getArrayValue
+import com.google.firebase.database.*
 
 class RevicionMedicaService {
     private val db: FirebaseDatabase;
@@ -25,8 +26,20 @@ class RevicionMedicaService {
         }.addOnFailureListener{
             onError(errorMessage)
         }
+    }
 
-
+    fun updateRevicionMedicaLocalDbFromFirebase(personaId:String, onSuccess: (revicionMedica: List<RevicionMedica>) -> Unit, onError: (error: String) -> Unit){
+        dbRef.child(personaId).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    onSuccess(dataSnapshot.getArrayValue(RevicionMedica::class.java))
+                }
+            }
+            override fun onCancelled(p0: DatabaseError) {
+                Log.i("FichaMedicaService","Error")
+                onError(p0.message)
+            }
+        })
     }
 
 

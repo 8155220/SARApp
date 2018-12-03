@@ -80,7 +80,7 @@ object Injection {
         return PersonaDetailViewModelFactory(providePersonaRepository(context),personaId)
     }
     fun provideFichaMedicaViewModelFactory(context:Context,personaId:String):ViewModelProvider.Factory{
-        return FichaMedicaViewModelFactory(provideFichaMedicaRepository(context),personaId)
+        return FichaMedicaViewModelFactory(provideFichaMedicaRepository(context), provideRevicionMedicaRepository(context),personaId)
     }
     fun provideFichaMedicaEditViewModelFactory(context:Context,personaId:String):ViewModelProvider.Factory{
         return FichaMedicaEditViewModelFactory(provideFichaMedicaRepository(context),personaId)

@@ -7,7 +7,7 @@ import bo.edu.uagrm.sarapp.utils.FirebaseObject
 @Entity(tableName="fichas_medicas")
 data class FichaMedica(
 
-    var tipoSangre:String = "oNegativo",
+    var tipoSangre:String = "NoEspecificado",
     @TypeConverters(Converters::class)
     var alergias:MutableList<String> = ArrayList(),
     @TypeConverters(Converters::class)
@@ -25,5 +25,4 @@ data class FichaMedica(
     var asmaBronquialApp:Boolean=false,
     var asmaBronquialApf:Boolean=false,
     var otras:String=""
-):FirebaseObject() {
-}
+):FirebaseObject() {}

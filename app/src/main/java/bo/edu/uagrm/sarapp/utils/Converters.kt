@@ -3,6 +3,7 @@ package bo.edu.uagrm.sarapp.utils
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.text.DecimalFormat
 import java.util.*
 
 
@@ -28,5 +29,12 @@ class Converters {
     @TypeConverter
     fun MutableListToString(someObjects: MutableList<String>): String {
         return gson.toJson(someObjects)
+    }
+
+    companion object {
+        fun roundTwoDecimals(d: Double): Double {
+            val twoDForm = DecimalFormat("#.##")
+            return java.lang.Double.valueOf(twoDForm.format(d))
+        }
     }
 }

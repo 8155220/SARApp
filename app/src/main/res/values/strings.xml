@@ -37,7 +37,7 @@
         <item>B RH positivo</item>
         <item>AB RH negativo</item>
         <item>AB RH positivo</item>
-        <item>NO ESPECIFICADO</item>
+        <item>NoEspecificado</item>
     </string-array>
     <string name="SyncSuccessMessage">Sincronizado Correctamente</string>
     <string name="UpdateSuccessMessage">Actualizado Correctamente</string>

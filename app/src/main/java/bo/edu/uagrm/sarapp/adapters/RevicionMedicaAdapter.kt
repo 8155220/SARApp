@@ -1,5 +1,6 @@
 package bo.edu.uagrm.sarapp.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,8 +11,18 @@ class RevicionMedicaAdapter internal constructor() : RecyclerView.Adapter<Revici
 
     private var list:MutableList<RevicionMedica> = ArrayList()
 
+    override fun onBindViewHolder(holder: RevicionMedicaAdapter.RevicionMedicaViewHolder, position: Int) {
+        //  val data = getItemId(position)
+        Log.d("entroajoi23joi33","")
+        val data = list.get(position)
+        holder.apply {
+            bind(data)
+            itemView.tag=data
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RevicionMedicaAdapter.RevicionMedicaViewHolder {
-        return RevicionMedicaAdapter.RevicionMedicaViewHolder(
+        return RevicionMedicaViewHolder(
             ItemListRevicionMedicaBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -24,23 +35,19 @@ class RevicionMedicaAdapter internal constructor() : RecyclerView.Adapter<Revici
 
     public fun setList(newList:MutableList<RevicionMedica> = ArrayList()){
         list=newList
-        notifyItemRangeInserted(0,list.size)
+        //notifyItemRangeInserted(0,list.size)
+        notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: RevicionMedicaAdapter.RevicionMedicaViewHolder, position: Int) {
-        //  val data = getItemId(position)
-        val data = list.get(position)
-        holder.apply {
-            bind(data)
-            itemView.tag=data
-        }
-    }
+
     override fun getItemCount() = list.size
 
     class RevicionMedicaViewHolder(private val binding: ItemListRevicionMedicaBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(item:RevicionMedica){
             binding.apply {
                 //txt=RevicionMedica;
+                Log.d("entroajoi23joi","")
+
                 revicionMedica=item
                 executePendingBindings()
             }

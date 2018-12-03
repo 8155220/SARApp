@@ -1,7 +1,6 @@
 package bo.edu.uagrm.sarapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import bo.edu.uagrm.sarapp.DI.Injection
 import bo.edu.uagrm.sarapp.R
+import bo.edu.uagrm.sarapp.adapters.RevicionMedicaAdapter
 import bo.edu.uagrm.sarapp.databinding.FragmentFichaMedicaBinding
 import bo.edu.uagrm.sarapp.viewmodels.FichaMedicaViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -31,10 +32,11 @@ class FichaMedicaFragment: Fragment() {
                     viewModel = fichaMedicaViewModel
                     setLifecycleOwner(this@FichaMedicaFragment)
                 }
+        val adapter = RevicionMedicaAdapter()
+        binding.recyclerRevicionMedica.adapter=adapter
+        binding.recyclerRevicionMedica.layoutManager = LinearLayoutManager(binding.root.context)
+
         binding.imgEdit.setOnClickListener {
-//            fichaMedicaViewModel.onSaveButton(personaId,alergiaAdapter.getList(),cirugiaAdapter.getList())
-//            binding.constraintProgressBar.visibility=View.VISIBLE
-//            binding.constraintLayout.visibility=View.GONE-
             val direction = FichaMedicaFragmentDirections.actionFichaMedicaFragmentDestToFichaMedicaEditFragmentDest(personaId)
             it.findNavController().navigate(direction)
         }
@@ -45,7 +47,6 @@ class FichaMedicaFragment: Fragment() {
 
         fichaMedicaViewModel.updateSuccess.observe(this, Observer{ it->
             //val direction = PersonaDetailFragmentDirections.actionPersonaDetailFragmentDestToFichaMedicaFragment(personaId)
-            Log.d(TAG,"Entro a success")
             swipeToRefresh.isRefreshing = false
             Snackbar.make(requireActivity().findViewById(R.id.activityCordinator),R.string.SyncSuccessMessage,
                 Snackbar.LENGTH_LONG).show()
@@ -53,6 +54,10 @@ class FichaMedicaFragment: Fragment() {
         fichaMedicaViewModel.updateError.observe(this, Observer { it->
             swipeToRefresh.isRefreshing = false
             Snackbar.make(requireActivity().findViewById(R.id.activityCordinator),R.string.UpdateErrorMessage, Snackbar.LENGTH_LONG).show()
+        })
+
+        fichaMedicaViewModel.revicionMedicaList.observe(this,Observer{it->
+            adapter.setList(it)
         })
 
 

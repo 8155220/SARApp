@@ -2,6 +2,7 @@ package bo.edu.uagrm.sarapp.ui
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import bo.edu.uagrm.sarapp.DI.Injection
 import bo.edu.uagrm.sarapp.R
 import bo.edu.uagrm.sarapp.data.model.RevicionMedica
 import bo.edu.uagrm.sarapp.databinding.FragmentRevicionMedicaCreateBinding
+import bo.edu.uagrm.sarapp.utils.Converters.Companion.roundTwoDecimals
 import bo.edu.uagrm.sarapp.viewmodels.RevicionMedicaCreateViewModel
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
@@ -44,11 +46,13 @@ class RevicionMedicaCreateFragment : Fragment() {
             val dpd = DatePickerDialog(activity, DatePickerDialog.OnDateSetListener { view, year, month, day ->
                 // Display Selected date in textbox
                 //binding.txtDate.text=("$day/$month/$year")
-                binding.txtDate.text=("$day/$month/$year")
-                val str_date= "$day-$month-$year"
+                val monthPlusOne = month +1
+                binding.txtDate.text=("$day/$monthPlusOne/$year")
+                val str_date= "$day-$monthPlusOne-$year"
                 val formatter = SimpleDateFormat("dd-MM-yyyy")
                 val date = formatter.parse(str_date)
                 dateTimeStamp = date.time
+                Log.d("RevicionMedicaTimeStamp",dateTimeStamp.toString())
                 // date.getTime() date in TimeStamp Type Long
                 //binding.txtDate.text= .toString()
             }, year, month, day)
@@ -68,7 +72,7 @@ class RevicionMedicaCreateFragment : Fragment() {
                  var revicionMedica= RevicionMedica(personaId = personaId,fecha = dateTimeStamp,
                      peso=txtPeso.toDouble(),
                      estatura = txtEstatura.toDouble(),
-                     indiceMasaCorporal = txtPeso.toDouble()/(txtEstatura.toDouble()*txtEstatura.toDouble()),
+                     indiceMasaCorporal = roundTwoDecimals(txtPeso.toDouble()/(txtEstatura.toDouble()*txtEstatura.toDouble())),
                      presionArterial = txtPresionArterial.toInt(),
                      frecuenciaCardiaca = txtFrecuenciaCardiaca.toInt(),
                      tratamiento = txtTratamiento)

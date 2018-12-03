@@ -13,4 +13,18 @@ class RevicionMedicaCache
             insertedFinished()
         }
     }
+    fun insert(revicionMedica: List<RevicionMedica>,insertedFinished:()->Unit){
+        ioExecutor.execute{
+            revicionMedicaDao.insert(revicionMedica)
+            insertedFinished()
+        }
+    }
+    fun getRevicionesMedicas(personaId:String)= revicionMedicaDao.getRevicionesMedicas(personaId)
+
+    fun emptyRevicionMedicafromPersona(personaId:String,deleteFinished:()->Unit){
+        ioExecutor.execute{
+            revicionMedicaDao.emptyemptyRevicionMedicafromPersona(personaId)
+            deleteFinished()
+        }
+    }
 }

@@ -13,8 +13,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-107" />
-                            <option name="y" value="-97" />
+                            <option name="x" value="-244" />
+                            <option name="y" value="-77" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -25,13 +25,13 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="147" />
-                            <option name="y" value="-333" />
+                            <option name="x" value="19" />
+                            <option name="y" value="-417" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_ficha_medica_fragment_dest_to_ficha_medica_fragment_dest">
+                            <entry key="action_ficha_medica_fragment_dest_to_ficha_medica_edit_fragment_dest">
                               <value>
                                 <LayoutPositions />
                               </value>

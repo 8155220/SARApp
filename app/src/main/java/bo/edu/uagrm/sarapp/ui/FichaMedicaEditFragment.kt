@@ -46,6 +46,9 @@ class FichaMedicaEditFragment: Fragment() {
             binding.constraintProgressBar.visibility=View.VISIBLE
             binding.constraintLayout.visibility=View.GONE
         }
+       binding.btnCancelar.setOnClickListener {
+            findNavController().popBackStack()
+       }
 
         fichaMedicaEditViewModel.fichaMedicaLocal.observe(this, Observer { it->
             if(it!=null){

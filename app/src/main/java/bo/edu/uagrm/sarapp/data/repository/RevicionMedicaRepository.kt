@@ -1,6 +1,7 @@
 package bo.edu.uagrm.sarapp.data.repository
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import bo.edu.uagrm.sarapp.data.db.RevicionMedicaCache
 import bo.edu.uagrm.sarapp.data.model.RevicionMedica
@@ -23,6 +24,19 @@ class RevicionMedicaRepository
             networkError.postValue(error)
         })
         return RevicionMedicaResult(updateSuccess,networkError)
+    }
+
+    fun getRevicionesMedicasLocal(personaId: String): LiveData<MutableList<RevicionMedica>>{
+        return cache.getRevicionesMedicas(personaId)
+    }
+
+    fun updateFichaMedicaLocalDbFromFirebase(personaId:String){
+        service.updateRevicionMedicaLocalDbFromFirebase(personaId,{revicionMedicaList ->
+            cache.emptyRevicionMedicafromPersona(personaId){
+                cache.insert(revicionMedicaList){
+                }
+            }
+        },{error->networkError.postValue(error) })
     }
 
 

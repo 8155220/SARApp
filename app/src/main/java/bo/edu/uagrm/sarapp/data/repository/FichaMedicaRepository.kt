@@ -39,6 +39,7 @@ class FichaMedicaRepository
         })
         return FichaMedicaResult(updateSucess,networkError)
     }
+
     fun getFichaMedicaLocal(personaId:String)=cache.getFichaMedica(personaId)
 
 }

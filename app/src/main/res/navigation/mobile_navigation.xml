@@ -26,12 +26,12 @@
                 android:name="personaId"
                 app:argType="string"/>
         <action
-            android:id="@+id/action_persona_detail_fragment_dest_to_fichaMedicaFragment"
-            app:destination="@id/ficha_medica_fragment_dest"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_in_right" />
+                android:id="@+id/action_persona_detail_fragment_dest_to_fichaMedicaFragment"
+                app:destination="@id/ficha_medica_fragment_dest"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/ficha_medica_fragment_dest"
@@ -41,9 +41,16 @@
             android:name="personaId"
             app:argType="string" />
         <action android:id="@+id/action_ficha_medica_fragment_dest_to_ficha_medica_edit_fragment_dest"
-                app:destination="@+id/ficha_medica_edit_fragment_dest"/>
+                app:destination="@+id/ficha_medica_edit_fragment_dest"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"/>
         <action android:id="@+id/action_ficha_medica_fragment_dest_to_revicion_medica_create_fragment_dest"
-                app:destination="@id/revicion_medica_create_fragment_dest"/>
+                app:destination="@id/revicion_medica_create_fragment_dest"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+        />
     </fragment>
     <fragment android:id="@+id/ficha_medica_edit_fragment_dest"
               android:name="bo.edu.uagrm.sarapp.ui.FichaMedicaEditFragment"
