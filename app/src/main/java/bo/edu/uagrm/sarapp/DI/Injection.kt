@@ -20,15 +20,15 @@ import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import bo.edu.uagrm.sarapp.data.db.FichaMedicaCache
 import bo.edu.uagrm.sarapp.data.db.PersonaLocalCache
+import bo.edu.uagrm.sarapp.data.db.RevicionMedicaCache
 import bo.edu.uagrm.sarapp.data.db.SARDatabase
 import bo.edu.uagrm.sarapp.data.repository.FichaMedicaRepository
 import bo.edu.uagrm.sarapp.data.repository.PersonaRepository
+import bo.edu.uagrm.sarapp.data.repository.RevicionMedicaRepository
 import bo.edu.uagrm.sarapp.data.service.FichaMedicaService
 import bo.edu.uagrm.sarapp.data.service.PersonaService
-import bo.edu.uagrm.sarapp.viewmodels.FichaMedicaEditViewModelFactory
-import bo.edu.uagrm.sarapp.viewmodels.FichaMedicaViewModelFactory
-import bo.edu.uagrm.sarapp.viewmodels.PersonaDetailViewModelFactory
-import bo.edu.uagrm.sarapp.viewmodels.ViewModelFactory
+import bo.edu.uagrm.sarapp.data.service.RevicionMedicaService
+import bo.edu.uagrm.sarapp.viewmodels.*
 import java.util.concurrent.Executors
 
 /**
@@ -49,6 +49,10 @@ object Injection {
         val database = SARDatabase.getInstance(context)
         return FichaMedicaCache(database.fichaMedicaDao(), Executors.newSingleThreadExecutor())
     }
+    private fun provideRevicionMedicaCache(context:Context): RevicionMedicaCache {
+        val database = SARDatabase.getInstance(context)
+        return RevicionMedicaCache(database.revicionMedicaDao(), Executors.newSingleThreadExecutor())
+    }
 
     /**
      * Creates an instance of [GithubRepository] based on the [GithubService] and a
@@ -59,6 +63,9 @@ object Injection {
     }
     private fun provideFichaMedicaRepository(context: Context): FichaMedicaRepository {
         return FichaMedicaRepository(FichaMedicaService.create(), provideFichaMedicaCache(context))
+    }
+    private fun provideRevicionMedicaRepository(context: Context): RevicionMedicaRepository {
+        return RevicionMedicaRepository(RevicionMedicaService.create(), provideRevicionMedicaCache(context))
     }
 
     /**
@@ -77,5 +84,8 @@ object Injection {
     }
     fun provideFichaMedicaEditViewModelFactory(context:Context,personaId:String):ViewModelProvider.Factory{
         return FichaMedicaEditViewModelFactory(provideFichaMedicaRepository(context),personaId)
+    }
+    fun provideRevicionMedicaCreateViewModelFactory(context:Context,personaId:String):ViewModelProvider.Factory{
+        return RevicionMedicaCreateViewModelFactory(provideRevicionMedicaRepository(context),personaId)
     }
 }

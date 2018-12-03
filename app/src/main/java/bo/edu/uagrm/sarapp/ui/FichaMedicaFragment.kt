@@ -34,8 +34,12 @@ class FichaMedicaFragment: Fragment() {
         binding.imgEdit.setOnClickListener {
 //            fichaMedicaViewModel.onSaveButton(personaId,alergiaAdapter.getList(),cirugiaAdapter.getList())
 //            binding.constraintProgressBar.visibility=View.VISIBLE
-//            binding.constraintLayout.visibility=View.GONE
-            val direction = FichaMedicaFragmentDirections.actionFichaMedicaFragmentToFichaMedicaEditFragment(personaId)
+//            binding.constraintLayout.visibility=View.GONE-
+            val direction = FichaMedicaFragmentDirections.actionFichaMedicaFragmentDestToFichaMedicaEditFragmentDest(personaId)
+            it.findNavController().navigate(direction)
+        }
+        binding.imgAddRevicionMedica.setOnClickListener {
+            val direction= FichaMedicaFragmentDirections.actionFichaMedicaFragmentDestToRevicionMedicaCreateFragmentDest(personaId)
             it.findNavController().navigate(direction)
         }
 
@@ -51,13 +55,12 @@ class FichaMedicaFragment: Fragment() {
             Snackbar.make(requireActivity().findViewById(R.id.activityCordinator),R.string.UpdateErrorMessage, Snackbar.LENGTH_LONG).show()
         })
 
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
         swipeToRefresh.setColorSchemeResources(R.color.colorPrimary,R.color.colorPrimaryDark,R.color.colorAccent)
         swipeToRefresh.setOnRefreshListener {

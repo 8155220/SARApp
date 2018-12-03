@@ -68,6 +68,8 @@ class FichaMedicaEditFragment: Fragment() {
 
         })
         fichaMedicaEditViewModel.updateError.observe(this, Observer { it->
+            binding.constraintProgressBar.visibility=View.GONE
+            binding.constraintLayout.visibility=View.VISIBLE
             Snackbar.make(requireActivity().findViewById(R.id.activityCordinator),R.string.UpdateErrorMessage,Snackbar.LENGTH_LONG).show()
         })
 

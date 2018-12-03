@@ -14,7 +14,7 @@ class FichaMedicaViewModel
  private val personaId:String) : ViewModel(){
 
     var fichaMedicaLocal: LiveData<FichaMedica>
-
+    //var revicionMedicaList:LiveData<List<RevicionMedica>>
     //Users Click submitButton
     val onSubmitFichaMedica= MutableLiveData<FichaMedica>()
     //Send and Waiting for result of updating
@@ -33,6 +33,7 @@ class FichaMedicaViewModel
     }
     init {
         fichaMedicaLocal = fichaMedicaRepository.getFichaMedicaLocal(personaId)
+        //revicionMedicaList =
     }
 
     fun updatefichaMedica(){

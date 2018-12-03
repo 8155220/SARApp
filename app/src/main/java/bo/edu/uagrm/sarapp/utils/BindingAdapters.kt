@@ -2,10 +2,12 @@ package bo.edu.uagrm.sarapp.utils
 
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
 import bo.edu.uagrm.sarapp.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -129,5 +131,17 @@ object BindingAdapters{
         if(value!=null && spinner!=null)
         spinner.setSelection(getPosFromGrupoSanguineo(value))
 
+    }
+
+    @BindingAdapter("bind:text")
+    @JvmStatic
+    fun  setText(view:EditText , value:Int) {
+        view.setText(value.toString());
+    }
+
+    @InverseBindingAdapter(attribute = "bind:text")
+    @JvmStatic
+    fun getText(view: EditText):Int {
+        return Integer.getInteger(view.getText().toString()) as Int ;
     }
 }

@@ -16,7 +16,7 @@ class TextAdapter internal constructor() : RecyclerView.Adapter<TextAdapter.Text
 
     override fun onBindViewHolder(holder: TextAdapter.TextViewHolder, position: Int) {
         //  val data = getItemId(position)
-          val data = list.get(position)
+        val data = list.get(position)
         holder.apply {
             bind(createOnClickListener(position),data)
             itemView.tag=data

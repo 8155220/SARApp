@@ -8,30 +8,35 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="fichaMedicaEditFragment">
+                  <entry key="ficha_medica_edit_fragment_dest">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="224" />
-                            <option name="y" value="-430" />
+                            <option name="x" value="-107" />
+                            <option name="y" value="-97" />
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="fichaMedicaFragment">
+                  <entry key="ficha_medica_fragment_dest">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-12" />
-                            <option name="y" value="-429" />
+                            <option name="x" value="147" />
+                            <option name="y" value="-333" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_fichaMedicaFragment_to_fichaMedicaEditFragment">
+                            <entry key="action_ficha_medica_fragment_dest_to_ficha_medica_fragment_dest">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_ficha_medica_fragment_dest_to_revicion_medica_create_fragment_dest">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -46,8 +51,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-487" />
-                            <option name="y" value="4" />
+                            <option name="x" value="-475" />
+                            <option name="y" value="-63" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -91,6 +96,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="revicion_medica_create_fragment_dest">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="450" />
+                            <option name="y" value="12" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

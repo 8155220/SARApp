@@ -7,16 +7,17 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import bo.edu.uagrm.sarapp.data.model.FichaMedica
 import bo.edu.uagrm.sarapp.data.model.Persona
+import bo.edu.uagrm.sarapp.data.model.RevicionMedica
 import bo.edu.uagrm.sarapp.utils.Converters
 
-@Database(entities = [Persona::class,FichaMedica::class],
-    version = 10,
+@Database(entities = [Persona::class,FichaMedica::class, RevicionMedica::class],
+    version = 12,
     exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class SARDatabase : RoomDatabase(){
     abstract fun personasDao():PersonaDao
     abstract fun fichaMedicaDao():FichaMedicaDao
-
+    abstract fun revicionMedicaDao():RevicionMedicaDao
     companion object {
         @Volatile
         private var INSTANCE: SARDatabase?=null
